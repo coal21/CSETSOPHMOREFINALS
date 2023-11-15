@@ -24,4 +24,11 @@ route::get('/home', [landingcontroller::class,'index']);
 
 route::get('/login', [logincontroller::class,'index']);
 
+
+
+// signup routes
 route::get('/signup', [signupcontroller::class,'index']);
+
+Route::post('/signup', [SignupController::class, 'submit']);
+
+Route::view('/pending-approval', 'Homwefind.pending_approval');

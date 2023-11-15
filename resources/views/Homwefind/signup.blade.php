@@ -18,7 +18,8 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <h1>Before it Was Cool</h1>
+        <h2>Retirement Community</h2>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -28,9 +29,9 @@
         </nav>
     </header>
     <main>
+    
+    <form id="signup" action="/signup" method="POST">
     <h2>Tell us about yourself!</h2>
-    <form action="process_signup.php" method="POST">
-
         <label for="role">Role:</label>
         <select id="role" name="role" onchange="showAdditionalFields(this.value)">
             <option value="None">--Select Role--</option>
@@ -111,12 +112,27 @@ main {
     background-color:#6497b1;
 }
 
+text {
+    font-family: "Geogia", Georgia, serif;
+}
+
+#signup {
+    background-color:#256685;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-family: "Geogia", Georgia, serif;
+
+}
+
 /* Footer styling */
 footer {
     background-color:#13455e;
     color: white;
     text-align: center;
     padding: 1rem;
+    font-family: "Geogia", Georgia, serif;
+
 }
     </style>
 </body>
