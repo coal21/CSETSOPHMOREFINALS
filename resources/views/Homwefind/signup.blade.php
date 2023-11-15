@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic HTML Setup</title>
+    <title>Signup</title>
+    <script>
+    function showAdditionalFields(role) {
+      const patientFields = document.getElementById('patientFields');
+
+      if (role === 'Patient') {
+        patientFields.style.display = 'block';
+      } else {
+        patientFields.style.display = 'none';
+      }
+    }
+  </script>
 </head>
 <body>
     <header>
@@ -16,8 +27,61 @@
             </ul>
         </nav>
     </header>
-
     <main>
+    <h2>Tell us about yourself!</h2>
+    <form action="process_signup.php" method="POST">
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" onchange="showAdditionalFields(this.value)">
+            <option value="None">--Select Role--</option>
+            <option value="Patient">Patient</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Supervisor">Supervisor</option>
+            <option value="Caretaker">Caretaker</option>
+            <option value="Family">Family</option>
+        </select>
+        <br><br>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+    <br><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+    <br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br><br>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required>
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+    <br><br>
+
+    <div id="patientFields" style="display: none;">
+        <label for="familyCode">Family Code:</label>
+        <input type="text" id="familyCode" name="familyCode">
+        <br><br>
+
+        <label for="emergencyContact">Emergency Contact:</label>
+        <input type="text" id="emergencyContact" name="emergencyContact">
+        <br><br>
+
+        <label for="relationToContact">Relation to Emergency Contact:</label>
+        <input type="text" id="relationToContact" name="relationToContact">
+        <br><br>
+    </div>
+
+        <input type="submit" value="Submit">
+        </form>
     </main>
 
     <footer>
