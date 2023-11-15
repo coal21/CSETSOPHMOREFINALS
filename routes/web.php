@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\signupcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 route::get('/home', [landingcontroller::class,'index']);
+
+route::get('/login', [logincontroller::class,'index']);
+
+route::get('/signup', [signupcontroller::class,'index']);
