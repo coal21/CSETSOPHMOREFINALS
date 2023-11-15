@@ -7,14 +7,13 @@
     <script>
     function showAdditionalFields(role) {
       const patientFields = document.getElementById('patientFields');
-
       if (role === 'Patient') {
         patientFields.style.display = 'block';
       } else {
         patientFields.style.display = 'none';
       }
     }
-  </script>
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +29,7 @@
     </header>
     <main>
     
-    <form id="signup" action="/signup" method="POST">
+    <form id="signup" action="/pending-approval" method="GET">
     <h2>Tell us about yourself!</h2>
         <label for="role">Role:</label>
         <select id="role" name="role" onchange="showAdditionalFields(this.value)">

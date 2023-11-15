@@ -15,6 +15,6 @@ class signupcontroller extends Controller
     public function submit(Request $request)
     {
         // Handle form
-        return view('/pending-approval');
+        return view('Homwefind.pending_approval');
     }
 }
