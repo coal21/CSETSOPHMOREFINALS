@@ -86,5 +86,38 @@
 
     <footer>
     </footer>
+    <style>
+        /* Define the overall layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+header {
+    background-color:#256685;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+/* Main content styling */
+main {
+    flex: 1;
+    padding: 1rem;
+    background-color:#6497b1;
+}
+
+/* Footer styling */
+footer {
+    background-color:#13455e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+    </style>
 </body>
 </html> 
