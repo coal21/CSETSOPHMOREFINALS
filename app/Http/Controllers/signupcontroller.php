@@ -10,4 +10,11 @@ class signupcontroller extends Controller
     {
         return view('Homwefind.signup');
     }
+
+
+    public function submit(Request $request)
+    {
+        // Handle form
+        return view('/pending-approval');
+    }
 }
