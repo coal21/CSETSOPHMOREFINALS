@@ -8,6 +8,6 @@ class signupcontroller extends Controller
 {
     public function index()
     {
-        return view('Homwefind.landing');
+        return view('Homwefind.signup');
     }
 }
