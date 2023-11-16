@@ -28,11 +28,11 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/home', 'Homwefind.home');
+Route::view('/home', 'Homepages.patienthome');
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/familyhome', 'Homwefind.familyhome');
+Route::view('/familyhome', 'Homepages.familyhome');
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
