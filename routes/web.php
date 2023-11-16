@@ -22,9 +22,17 @@ Route::get('/', function () {
 
 route::get('/home', [landingcontroller::class,'index']);
 
+
+// Login Routes
 route::get('/login', [logincontroller::class,'index']);
 
+Route::post('/login', [loginController::class, 'submit']);
 
+Route::view('/home', 'Homwefind.home');
+
+Route::post('/login', [loginController::class, 'submit']);
+
+Route::view('/familyhome', 'Homwefind.familyhome');
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
