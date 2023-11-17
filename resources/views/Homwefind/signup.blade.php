@@ -14,8 +14,8 @@
     }
     </script>
     <main>
-    
-    <form id="signup" action="/pending-approval" method="GET">
+    <form id="signup" action="/signup" method="POST">
+    @csrf
     <h2>Tell us about yourself!</h2>
         <label for="role">Role:</label>
         <select id="role" name="role" onchange="showAdditionalFields(this.value)">
