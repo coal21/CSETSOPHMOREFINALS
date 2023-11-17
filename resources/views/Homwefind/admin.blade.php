@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin pag</title>
+    <title>Admin Page</title>
 </head>
 <body>
     
     <table>
-        @foreach($Roles as $Roles)
+        @foreach($roles as $role)
         <tr>
-            <td>{{$Roles->id}}</td>
-            <td>{{$Roles->name}}</td>
-            <td>{{$Roles->access_level}}</td>
-            <td>{{$Roles->access_level}}</td>
+            <td>{{$role->id}}</td>
+            <td>{{$role->name}}</td>
+            <td>{{$role->access_level}}</td>
+            <td>{{$role->access_level}}</td>
         </tr>
         @endforeach
     </table>
