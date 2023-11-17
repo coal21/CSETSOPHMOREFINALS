@@ -14,12 +14,12 @@ class logincontroller extends Controller
     public function submit(Request $request)
     {
         // Handle form
-        return view('Homwefind.Admin_home');
+        return view('Homepages.patienthome');
     }
 
     public function family(Request $request)
     {
         // Handle form
-        return view('Homwefind.familyhome');
+        return view('Homepages.familyhome');
     }
 }
