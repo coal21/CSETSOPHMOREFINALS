@@ -28,15 +28,15 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/home', 'Homwefind.home');
+Route::view('/home', 'Homepages.patienthome');
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/familyhome', 'Homwefind.familyhome');
+Route::view('/familyhome', 'Homepages.familyhome');
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
 Route::post('/signup', [SignupController::class, 'submit']);
 
-Route::view('/pending-approval', 'Homwefind.pending_approval');
+Route::redirect('/pending-approval', 'Homwefind.pending_approval');
