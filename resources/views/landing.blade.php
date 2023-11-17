@@ -2,7 +2,8 @@
 
 
 @section('content')
-
+    <h2>Welcome to the Home Page!</h2>
+    <p>This is the home page content.</p>
     <main>
 
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"><div style='text-align:center; margin-top:30px;'>
@@ -18,4 +19,3 @@
     </main>
 
 @endsection
-
