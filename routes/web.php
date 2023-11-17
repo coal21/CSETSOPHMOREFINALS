@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
@@ -33,6 +34,8 @@ Route::view('/home', 'Homepages.patienthome');
 Route::post('/login', [loginController::class, 'submit']);
 
 Route::view('/familyhome', 'Homepages.familyhome');
+
+Route::get('/admin', [admincontroller::class,'show']);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);

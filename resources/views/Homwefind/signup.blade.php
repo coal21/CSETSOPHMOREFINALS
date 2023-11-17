@@ -20,11 +20,9 @@
         <label for="role">Role:</label>
         <select id="role" name="role" onchange="showAdditionalFields(this.value)">
             <option value="None">--Select Role--</option>
-            <option value="Patient">Patient</option>
-            <option value="Doctor">Doctor</option>
-            <option value="Supervisor">Supervisor</option>
-            <option value="Caretaker">Caretaker</option>
-            <option value="Family">Family</option>
+            @foreach ($roles as $role)
+            <option value="{{ $role->name }}">{{ $role->name }}</option>
+            @endforeach
         </select>
         <br><br>
 
