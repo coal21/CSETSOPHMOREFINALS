@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class doctorappointment extends Controller
+class admincontroller extends Controller
 {
     //
 }
