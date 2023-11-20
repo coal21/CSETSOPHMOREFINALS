@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
-use App\Models\Doctor;
+use App\Models\Doctors;
 use App\Models\Roles;
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class signupcontroller extends Controller
     public function submit(Request $request){
         $role = $request->post('role');
 
-        if ($role === 'patient') {
+        if ($role === 'Patient') {
             $patient = Patient::create([
             'first_name' => $request->input('firstName'),
             'last_name' => $request->input('lastName'),
@@ -38,8 +38,8 @@ class signupcontroller extends Controller
             ]);
             return view('Homwefind.pending_approval');
         }
-        elseif ($role === 'doctor') {
-            $doctor = Doctor::create([
+        elseif ($role === 'Doctor') {
+            $doctor = Doctors::create([
             'first_name' => $request->input('firstName'),
             'last_name' => $request->input('lastName'),
             'email' => $request->input('email'),
