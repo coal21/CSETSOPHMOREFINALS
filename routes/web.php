@@ -29,9 +29,9 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/home', 'Homepages.patienthome');
-
 Route::post('/login', [loginController::class, 'submit']);
+
+Route::view('/home', 'Homepages.patienthome');
 
 Route::view('/familyhome', 'Homepages.familyhome');
 
@@ -40,6 +40,6 @@ Route::get('/admin', [admincontroller::class,'show']);
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup', [SignupController::class, 'submit']);
+Route::post('/signup/submit', [SignupController::class, 'submit']);
 
-Route::redirect('/pending-approval', 'Homwefind.pending_approval');
+Route::view('/pending-approval', 'Homwefind.pending_approval');

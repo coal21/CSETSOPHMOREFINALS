@@ -14,7 +14,7 @@
     }
     </script>
     <main>
-    <form id="signup" action="/signup" method="POST">
+    <form id="signup" action="/signup/submit" method="POST">
     @csrf
     <h2>Tell us about yourself!</h2>
         <label for="role">Role:</label>
