@@ -10,4 +10,16 @@ class logincontroller extends Controller
     {
         return view('Homwefind.login');
     }
+
+    public function submit(Request $request)
+    {
+        // Handle form
+        return view('Homepages.patienthome');
+    }
+
+    public function family(Request $request)
+    {
+        // Handle form
+        return view('Homepages.familyhome');
+    }
 }
