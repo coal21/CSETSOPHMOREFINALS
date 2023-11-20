@@ -39,3 +39,5 @@ Route::get('/admin', [admincontroller::class,'show']);
 route::get('/signup', [signupcontroller::class,'index']);
 
 Route::post('/signup/submit', [SignupController::class, 'submit']);
+
+Route::view('/pending-approval', 'Homwefind.pending_approval');

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use App\Models\Caregiver;
+use App\Models\Family;
+use App\Models\Supervisor;
 use App\Models\Patient;
 use App\Models\Doctors;
 use App\Models\Roles;
@@ -48,6 +52,45 @@ class signupcontroller extends Controller
             'DOB' => $request->input('dob'),
             'status' => "Pending",
             'role_id' => 3,
+            ]);
+            return view('Homwefind.pending_approval');
+        }
+        elseif ($role === 'Supervisor') {
+            $supervisor = Supervisor::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => bcrypt($request->input('password')),
+            'DOB' => $request->input('dob'),
+            'status' => "Pending",
+            'role_id' => 2,
+            ]);
+            return view('Homwefind.pending_approval');
+        }
+        elseif ($role === 'Caregiver') {
+            $caregiver = Caregiver::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => bcrypt($request->input('password')),
+            'DOB' => $request->input('dob'),
+            'status' => "Pending",
+            'role_id' => 4,
+            ]);
+            return view('Homwefind.pending_approval');
+        }
+        elseif ($role === 'Family') {
+            $family = Family::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => bcrypt($request->input('password')),
+            'DOB' => $request->input('dob'),
+            'status' => "Pending",
+            'role_id' => 6,
             ]);
             return view('Homwefind.pending_approval');
     }
