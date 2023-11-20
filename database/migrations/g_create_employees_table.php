@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->decimal('salary', 5, 2);
             $table->string('first_name');
+
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles');
+            
             $table->timestamps();
         });
     }

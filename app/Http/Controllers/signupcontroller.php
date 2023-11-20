@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\Doctor;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 
 
@@ -11,7 +12,8 @@ class signupcontroller extends Controller
 {
     public function index()
     {
-        return view('Homwefind.signup');
+        $roles = Roles::all();
+        return view('Homwefind.signup', ['roles' => $roles]);
     }
 
     
