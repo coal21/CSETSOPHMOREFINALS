@@ -38,6 +38,6 @@ Route::get('/admin', [admincontroller::class,'show']);
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup/submit', [signupController::class, 'submit']);
+Route::post('/signup/submit', [SignupController::class, 'submit']);
 
-route::redirect('/pending-approval', 'Homwefind.pending_approval');
+Route::view('/pending-approval', 'Homwefind.pending_approval');

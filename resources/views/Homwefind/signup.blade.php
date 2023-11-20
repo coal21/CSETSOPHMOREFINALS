@@ -21,7 +21,9 @@
         <select id="role" name="role" onchange="showAdditionalFields(this.value)">
             <option value="None">--Select Role--</option>
             @foreach ($roles as $role)
-            <option value="{{ $role->name }}">{{ $role->name }}</option>
+            @if ($role->name != 'Admin')
+                <option value="{{ $role->name }}">{{ $role->name }}</option>
+            @endif
             @endforeach
         </select>
         <br><br>
