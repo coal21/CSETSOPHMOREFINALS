@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use App\Models\Caregiver;
+use App\Models\Family;
+use App\Models\Supervisor;
 use App\Models\Patient;
-use App\Models\Doctor;
+use App\Models\Doctors;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 
 
@@ -11,14 +16,15 @@ class signupcontroller extends Controller
 {
     public function index()
     {
-        return view('Homwefind.signup');
+        $roles = Roles::all();
+        return view('Homwefind.signup', ['roles' => $roles]);
     }
 
     
     public function submit(Request $request){
         $role = $request->post('role');
 
-        if ($role === 'patient') {
+        if ($role === 'Patient') {
             $patient = Patient::create([
             'first_name' => $request->input('firstName'),
             'last_name' => $request->input('lastName'),
@@ -36,8 +42,8 @@ class signupcontroller extends Controller
             ]);
             return view('Homwefind.pending_approval');
         }
-        elseif ($role === 'doctor') {
-            $doctor = Doctor::create([
+        elseif ($role === 'Doctor') {
+            $doctor = Doctors::create([
             'first_name' => $request->input('firstName'),
             'last_name' => $request->input('lastName'),
             'email' => $request->input('email'),
@@ -46,6 +52,45 @@ class signupcontroller extends Controller
             'DOB' => $request->input('dob'),
             'status' => "Pending",
             'role_id' => 3,
+            ]);
+            return view('Homwefind.pending_approval');
+        }
+        elseif ($role === 'Supervisor') {
+            $supervisor = Supervisor::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => bcrypt($request->input('password')),
+            'DOB' => $request->input('dob'),
+            'status' => "Pending",
+            'role_id' => 2,
+            ]);
+            return view('Homwefind.pending_approval');
+        }
+        elseif ($role === 'Caregiver') {
+            $caregiver = Caregiver::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => bcrypt($request->input('password')),
+            'DOB' => $request->input('dob'),
+            'status' => "Pending",
+            'role_id' => 4,
+            ]);
+            return view('Homwefind.pending_approval');
+        }
+        elseif ($role === 'Family') {
+            $family = Family::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => bcrypt($request->input('password')),
+            'DOB' => $request->input('dob'),
+            'status' => "Pending",
+            'role_id' => 6,
             ]);
             return view('Homwefind.pending_approval');
     }
