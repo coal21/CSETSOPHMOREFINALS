@@ -10,16 +10,10 @@
     <table>
         @foreach($roles as $role)
         <tr>
-<<<<<<< HEAD
-            <td>{{$Roles->id}}</td>
-            <td>{{$Roles->name}}</td>
-            <td>{{$Roles->access_level}}</td>
-=======
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
             <td>{{$role->access_level}}</td>
             <td>{{$role->access_level}}</td>
->>>>>>> bcf9854e59c553766458e45124cc9f77df5bcd74
         </tr>
         @endforeach
     </table>
