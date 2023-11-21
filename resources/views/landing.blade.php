@@ -172,7 +172,8 @@
 
 @section('content')
 
-<!-- <main>
+    <main>
+
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"><div style='text-align:center; margin-top:30px;'>
             <div style='display: flex; justify-content: center; align-items: center; height: 100vh;'>
             <div style='border: 2px solid #3498db; padding: 20px;'>
@@ -185,3 +186,4 @@
         </div>
 </main> -->
 @endsection
+
