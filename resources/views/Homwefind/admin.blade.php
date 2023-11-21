@@ -13,9 +13,20 @@
             <td>{{$Roles->id}}</td>
             <td>{{$Roles->name}}</td>
             <td>{{$Roles->access_level}}</td>
-            <td>{{$Roles->access_level}}</td>
         </tr>
         @endforeach
     </table>
+
+    <form action="Adminsub">
+        <label for="Roles">New Roles:</label>
+        <input type="text" placeholder="Enter Role" name="Roles" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <form action="Adminsub">
+        <label for="AccessLV">AccessLV:</label>
+        <input type="text" placeholder="Enter Access LV" name="AccessLV" required>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

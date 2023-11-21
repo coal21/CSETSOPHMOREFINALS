@@ -10,6 +10,6 @@ class admincontroller extends Controller
     public function show()
     {
         $data=Roles::all();
-        return view('admin', compact('data'));
+        return view('/admin', compact('data'));
     }
 }
