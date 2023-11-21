@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
@@ -28,15 +29,15 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/home', 'Homwefind.home');
+Route::view('/home', 'Homepages.patienthome');
 
-Route::post('/login', [loginController::class, 'submit']);
+Route::view('/familyhome', 'Homepages.familyhome');
 
-Route::view('/familyhome', 'Homwefind.familyhome');
+Route::get('/admin', [admincontroller::class,'show']);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup', [SignupController::class, 'submit']);
+Route::post('/signup/submit', [SignupController::class, 'submit']);
 
 Route::view('/pending-approval', 'Homwefind.pending_approval');

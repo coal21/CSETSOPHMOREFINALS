@@ -1,7 +1,7 @@
-@extends('layout.layout')
+<!-- @extends('layout.layout')
 
 
-@section('content')
+@section('content') -->
   <title>Pending Approval</title>
 
 
@@ -31,4 +31,4 @@
         <p>We will review your information shortly.</p>
         <div class="loading"></div>
     </div>
-    @endsection
+    <!-- @endsection -->
