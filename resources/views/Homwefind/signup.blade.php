@@ -14,17 +14,17 @@
     }
     </script>
     <main>
-    <form id="signup" action="/signup" method="POST">
+    <form id="signup" action="/signup/submit" method="POST">
     @csrf
     <h2>Tell us about yourself!</h2>
         <label for="role">Role:</label>
         <select id="role" name="role" onchange="showAdditionalFields(this.value)">
             <option value="None">--Select Role--</option>
-            <option value="Patient">Patient</option>
-            <option value="Doctor">Doctor</option>
-            <option value="Supervisor">Supervisor</option>
-            <option value="Caretaker">Caretaker</option>
-            <option value="Family">Family</option>
+            @foreach ($roles as $role)
+            @if ($role->name != 'Admin')
+                <option value="{{ $role->name }}">{{ $role->name }}</option>
+            @endif
+            @endforeach
         </select>
         <br><br>
 
