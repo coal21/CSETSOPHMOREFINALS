@@ -1,6 +1,7 @@
 @extends('layout.layout')
 
 
+
 @section('slide')
 
 
@@ -56,6 +57,7 @@
       transform: translate(-50%, -50%);
       text-align: center;
     }
+
 
     .login-button, .signup-button {
       padding: 10px;
@@ -173,4 +175,5 @@
 @section('content')
 
 @endsection
+
 
