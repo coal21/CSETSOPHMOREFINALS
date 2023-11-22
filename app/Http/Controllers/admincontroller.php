@@ -34,37 +34,9 @@ class admincontroller extends Controller
             'supervisors' => $supervisors
         ]);
     }
-    public function approve_account($id)
+    public function approve_account()
     {
-        try {
-            // Log to verify method entry and received ID
-            Log::info('Accessing approve_account method.');
-            Log::info('Received ID for approval: ' . $id);
-
-            // Find the caregiver by ID
-            $caregiver = Caregiver::findOrFail($id);
-
-            // Log found caregiver information
-            Log::info('Found caregiver: ' . $caregiver->id . ', Status: ' . $caregiver->status);
-
-            // Perform the approval logic here
-            $caregiver->status = 'approved';
-            $caregiver->save();
-
-            // Log success message
-            Log::info('Caregiver approved successfully.');
-
-            // Redirect with a success message or perform further actions
-            return redirect('/approval')->with('success', 'Caregiver approved successfully.');
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
-            // Log if caregiver is not found
-            Log::warning('Caregiver not found for ID: ' . $id);
-            return redirect()->back()->with('error', 'Caregiver not found.');
-        } catch (\Exception $exception) {
-            // Log other exceptions if any
-            Log::error('Error approving caregiver: ' . $exception->getMessage());
-            return redirect()->back()->with('error', 'Error approving caregiver.');
-        }
+        
     }
 }
 

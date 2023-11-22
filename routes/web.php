@@ -37,7 +37,7 @@ Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/approval', [admincontroller::class,'approval']);
 
-Route::post('/approve_account/{id}', [admincontroller::class, 'approve_account'])->name('approve_account');
+Route::post('/approve_account/{id}', [admincontroller::class, 'approve_account']);
 
 // signup routes
 Route::get('/signup', [signupcontroller::class,'index']);

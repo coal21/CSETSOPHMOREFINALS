@@ -15,12 +15,6 @@
                 <td>{{$patient->first_name}} {{$patient->last_name}}</td>
                 <td>{{$patient->email}}</td>
                 <td>{{$patient->phone}}</td>
-                <td>
-                    <form action="{{ route('approve_account', ['id' => $patient->id]) }}" method="POST">
-                        @csrf
-                        <button type="submit">Approve (ID: {{$patient->id}})</button>
-                    </form>
-                </td>
             </tr>
         @endforeach
     @endisset
