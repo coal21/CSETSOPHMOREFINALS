@@ -37,9 +37,10 @@ Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/approval', [admincontroller::class,'approval']);
 
+Route::get('/approve_account/{id}',[admincontroller::class,'approve_account']);
 
 // signup routes
-route::get('/signup', [signupcontroller::class,'index']);
+Route::get('/signup', [signupcontroller::class,'index']);
 
 Route::post('/signup/submit/submit', [SignupController::class, 'submit']);
 

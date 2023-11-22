@@ -15,11 +15,14 @@
             <td>{{$patient->first_name}} {{$patient->last_name}}</td>
             <td>{{$patient->email}}</td>
             <td>{{$patient->phone}}</td>
+            <td><a href="{{url('approve_account', ['id' => $patient->id]) }}">Approve</a></td>
+
+            <td><a href=""></a></td>
         </tr>
         @endforeach
     @endisset
     </table>
-    <h1>Caregiver</h1>
+    <h1>Caregivers</h1>
     <table>
     @isset($caregivers)
     @foreach($caregivers as $caregiver)
@@ -42,6 +45,32 @@
             <td>{{$families->email}}</td>
             <td>{{$families->phone}}</td>
             
+        </tr>
+        @endforeach
+    @endisset
+    </table>
+    <h1>Doctors</h1>
+    <table>
+    @isset($doctors)
+    @foreach($doctors as $doctor)
+        <tr>
+            <td>{{$doctor->id}}</td>
+            <td>{{$doctor->first_name}} {{$doctor->last_name}}</td>
+            <td>{{$doctor->email}}</td>
+            <td>{{$doctor->phone}}</td>
+        </tr>
+        @endforeach
+    @endisset
+    </table>
+    <h1>Supervisors</h1>
+    <table>
+    @isset($supervisors)
+    @foreach($supervisors as $supervisor)
+        <tr>
+            <td>{{$supervisor->id}}</td>
+            <td>{{$supervisor->first_name}} {{$supervisor->last_name}}</td>
+            <td>{{$supervisor->email}}</td>
+            <td>{{$supervisor->phone}}</td>
         </tr>
         @endforeach
     @endisset

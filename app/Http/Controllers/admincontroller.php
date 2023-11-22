@@ -33,11 +33,33 @@ class admincontroller extends Controller
             'supervisors' => $supervisors
         ]);
     }
-    
 
-    public function approve()
-    {
 
+    public function approve_account($id)
+{
+    $data = Caregiver::find($id);
+
+    if ($data) {
+        $data->status = 'approved';
+        $saved = $data->save(); // Check if the save operation is successful
+        
+        if ($saved) {
+            // If the save was successful
+            // Fetch updated data for display after approval
+            $caregivers = Caregiver::where('status', 'Pending')->get();
+            // Fetch other pending data for display (if needed)
+            
+            return redirect('/approval')->with([
+                'caregivers' => $caregivers,
+                // Other necessary data for display on the approval page
+            ]);
+        } else {
+            // If the save was not successful
+            return redirect()->back()->with('error', 'Failed to update status.');
+        }
+    } else {
+        // Handle the case where the record with the given ID doesn't exist
+        return redirect()->back()->with('error', 'Caregiver not found.');
     }
 }
-
+}
