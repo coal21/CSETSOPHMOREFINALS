@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
@@ -29,17 +29,20 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/home', 'Homepages.patienthome');
-
 Route::post('/login', [loginController::class, 'submit']);
+
+Route::view('/home', 'Homepages.patienthome');
 
 Route::view('/familyhome', 'Homepages.familyhome');
 
 Route::get('/admin', [admincontroller::class,'show']);
 
+Route::get('/approval', [admincontroller::class,'approval']);
+
+
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup', [SignupController::class, 'submit']);
+Route::post('/signup/submit', [SignupController::class, 'submit']);
 
-Route::redirect('/pending-approval', 'Homwefind.pending_approval');
+Route::view('/pending-approval', 'Homwefind.pending_approval');
