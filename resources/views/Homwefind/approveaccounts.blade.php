@@ -6,22 +6,25 @@
     <title>Test</title>
 </head>
 <body>
-    <h1>Patients</h1>
-    <table>
+<h1>Patients</h1>
+<table>
     @isset($patients)
-    @foreach($patients as $patient)
-        <tr>
-            <td>{{$patient->id}}</td>
-            <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-            <td>{{$patient->email}}</td>
-            <td>{{$patient->phone}}</td>
-            <td><a href="{{url('approve_account', ['id' => $patient->id]) }}">Approve</a></td>
-
-            <td><a href=""></a></td>
-        </tr>
+        @foreach($patients as $patient)
+            <tr>
+                <td>{{$patient->id}}</td>
+                <td>{{$patient->first_name}} {{$patient->last_name}}</td>
+                <td>{{$patient->email}}</td>
+                <td>{{$patient->phone}}</td>
+                <td>
+                    <form action="{{ route('approve_account', ['id' => $patient->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit">Approve (ID: {{$patient->id}})</button>
+                    </form>
+                </td>
+            </tr>
         @endforeach
     @endisset
-    </table>
+</table>
     <h1>Caregivers</h1>
     <table>
     @isset($caregivers)
