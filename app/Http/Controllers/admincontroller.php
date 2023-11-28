@@ -11,4 +11,12 @@ class admincontroller extends Controller
         $roles = Roles::all();
         return view('Homwefind.admin', ['roles' => $roles]);
     }
+
+    public function create(Request $request)
+    {
+        $role = Roles::create([
+            'name' => $request->input('newRole'),
+            'access_level' => $request->input('accessLV'),
+        ]);
+    }
 }

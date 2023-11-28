@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\doctorappointmentcontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
@@ -25,19 +26,28 @@ route::get('/home', [landingcontroller::class,'index']);
 
 
 // Login Routes
-route::get('/login', [logincontroller::class,'index']);
+route::get('/login', [loginController::class,'index']);
 
 Route::post('/login', [loginController::class, 'submit']);
 
-Route::view('/home', 'Homepages.patienthome');
+Route::view('/home', 'Homwefind.home');
 
-Route::view('/familyhome', 'Homepages.familyhome');
+Route::post('/login', [loginController::class, 'submit']);
 
-Route::get('/admin', [admincontroller::class,'show']);
+Route::view('/familyhome', 'Homwefind.familyhome');
 
 // signup routes
-route::get('/signup', [signupcontroller::class,'index']);
+route::get('/signup', [signupController::class,'index']);
 
-Route::post('/signup/submit', [SignupController::class, 'submit']);
+Route::post('/signup', [SignupController::class, 'submit']);
 
 Route::view('/pending-approval', 'Homwefind.pending_approval');
+
+// Admin Page
+Route::get('/admin',[adminController::class,'show']);
+Route::post('/create_access_level',[adminController::class,'create']);
+
+// Doctor's Appointment
+Route::post('/create_Appointment',[doctorappointmentcontroller::class,'create']);
+
+
