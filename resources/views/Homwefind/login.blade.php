@@ -3,7 +3,8 @@
 
 @section('content')
 
-    <main>        <div class="login" >
+    <main>        
+        <div class="login" >
             <form action="/home" method="GET">
             <label for="ID"><b>Patient ID</b></label>
             <input type="text" placeholder="Enter Patient ID" name="ID" required>
