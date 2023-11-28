@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
@@ -54,9 +54,13 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 Route::view('/family-home', 'Homepages.patienthome')->name('family.home');
 
 
-// signup routes
-route::get('/signup', [signupcontroller::class,'index']);
+Route::get('/approval', [admincontroller::class,'approval']);
 
-Route::post('/signup/submit', [SignupController::class, 'submit']);
+Route::post('/approve_account/{id}', [admincontroller::class, 'approve_account']);
+
+// signup routes
+Route::get('/signup', [signupcontroller::class,'index']);
+
+Route::post('/signup/submit/submit', [SignupController::class, 'submit']);
 
 Route::view('/pending-approval', 'Homwefind.pending_approval');
