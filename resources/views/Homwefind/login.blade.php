@@ -5,14 +5,22 @@
 
     <main>        
         <div class="login" >
-            <form action="/home" method="GET">
-            <label for="ID"><b>Patient ID</b></label>
-            <input type="text" placeholder="Enter Patient ID" name="ID" required>
+            <form action="{{ route('loginsubmit') }}" method="POST">
+            @csrf
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="None">--Select Role--</option>
+                @foreach ($roles as $role)
+                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                @endforeach
+            </select>
+            <label for="Email"><b> Email</b></label>
+            <input type="email" name="email" placeholder="Email" required>
 
             <label for="password"><b>password</b></label>
-            <input type="text" placeholder="Enter Patient password" name="password" required>
+            <input type="password" name="password" placeholder="Password" required>
 
-            <input type="submit" value="Submit">
+            <button type="submit">Login</button>
             <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
