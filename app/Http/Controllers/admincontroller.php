@@ -18,7 +18,14 @@ class admincontroller extends Controller
         return view('Homwefind.admin', ['roles' => $roles]);
     }
 
-    public function awaiting()
+    public function create(Request $request)
+    {
+        $role = Roles::create([
+            'name' => $request->input('newRole'),
+            'access_level' => $request->input('accessLV'),
+        ]);
+    }
+    public function approval()
     {
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
@@ -29,50 +36,9 @@ class admincontroller extends Controller
         return view('Homwefind.approveaccounts', [
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
-            'families' => $family, 
+            'family' => $family, 
             'patients' => $patients, 
             'supervisors' => $supervisors
         ]);
-    }
-
-    public function approveAccount(Request $request)
-
-    {
-
-        $id = $request->input('id');
-        $role_id = $request->input('role_id');
-
-        $finalDecision = $request->input('decision');
-
-        $usersRole = Roles::where('id', $role_id)->first();
-        $user = null;
-
-        switch ($usersRole->name) {
-            case 'Caregiver':
-                $user = Caregiver::findorFail($id);
-                break;
-            case 'Doctor':
-                $user = Doctors::findorFail($id);
-                break;
-            case 'Supervisor':
-                $user = Supervisor::findorFail($id);
-                break;
-            case 'Patient':
-                $user = Patient::findorFail($id);
-                break;
-            case 'Family':
-                $user = Family::findorFail($id);
-                break;
-        }
-
-        if ($finalDecision == "Yes") {
-            $user->status = "Approved";
-            $user->save();
-        } else {
-            $user->delete();
-        }
-
-        return $this->awaiting();
-
     }
 }
