@@ -15,7 +15,7 @@ class admincontroller extends Controller
     public function show()
     {
         $roles = Roles::all();
-        return view('Homwefind.admin', ['roles' => $roles]);
+        return view('Homepages.adminhome', ['roles' => $roles]);
     }
 
     public function create(Request $request)
