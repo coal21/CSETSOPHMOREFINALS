@@ -25,7 +25,6 @@ class admincontroller extends Controller
             'access_level' => $request->input('accessLV'),
         ]);
     }
-}
     public function approval()
     {
         $caregivers = Caregiver::where('status', 'Pending')->get();
@@ -42,9 +41,4 @@ class admincontroller extends Controller
             'supervisors' => $supervisors
         ]);
     }
-    public function approve_account()
-    {
-        
-    }
 }
-
