@@ -31,6 +31,8 @@ route::get('/login', [loginController::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
+Route::get('/admin', [admincontroller::class,'show']);
+
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
 Route::view('/home', 'Homepages.patienthome');

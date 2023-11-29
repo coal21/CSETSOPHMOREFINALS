@@ -56,6 +56,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
+      
     }
 
 
@@ -72,6 +73,9 @@
     .login-button a, .signup-button a {
       text-decoration: none;
       color: #333;
+      display: block; /* Make the link take up the entire button space */
+      width: 100%; /* Ensure the link takes up the full width of the button */
+      height: 100%;
     }
     
 
@@ -87,8 +91,8 @@
     <div class="text-container">
       <div class="text"><p>Join Before It Was Cool Retirement Community Today!</p></div>
         <div class="login-signup-container">
-            <button class="login-button"><a href='/login'>Login</a></button>
-            <button class="signup-button"><a href='/signup'>Sign Up</a></button>
+            <a href='/login'><button class="login-button">Login</button></a>
+            <a href='/signup'><button class="signup-button">Sign Up</button></a>
         </div>
     </div>
 </div>
@@ -98,8 +102,8 @@
     <div class="text-container">
       <div class="text"><p>Join Before It Was Cool Retirement Community Today!</p></div>
       <div class="login-signup-container">
-            <button class="login-button"><a href='/login'>Login</a></button>
-            <button class="signup-button"><a href='/signup'>Sign Up</a></button>
+            <a href='/login'><button class="login-button">Login</button></a>
+            <a href='/signup'><button class="signup-button">Sign Up</button></a>
         </div>
     </div>
 </div>
@@ -109,8 +113,8 @@
     <div class="text-container">
       <div class="text"><p>Join Before It Was Cool Retirement Community Today!</p></div>
       <div class="login-signup-container">
-            <button class="login-button"><a href='/login'>Login</a></button>
-            <button class="signup-button"><a href='/signup'>Sign Up</a></button>
+            <a href='/login'><button class="login-button">Login</button></a>
+            <a href='/signup'><button class="signup-button">Sign Up</button></a>
         </div>
     </div>
 </div>
@@ -120,8 +124,8 @@
     <div class="text-container">
       <div class="text"><p>Join Before It Was Cool Retirement Community Today!</p></div>
       <div class="login-signup-container">
-            <button class="login-button"><a href='/login'>Login</a></button>
-            <button class="signup-button"><a href='/signup'>Sign Up</a></button>
+            <a href='/login'><button class="login-button">Login</button></a>
+            <a href='/signup'><button class="signup-button">Sign Up</button></a>
         </div>
     </div>
 </div>
@@ -131,8 +135,8 @@
     <div class="text-container">
       <div class="text"><p>Join Before It Was Cool Retirement Community Today!</p></div>
       <div class="login-signup-container">
-            <button class="login-button"><a href='/login'>Login</a></button>
-            <button class="signup-button"><a href='/signup'>Sign Up</a></button>
+            <a href='/login'><button class="login-button">Login</button></a>
+            <a href='/signup'><button class="signup-button">Sign Up</button></a>
         </div>
     </div>
 </div>
@@ -141,8 +145,8 @@
     <div class="text-container">
       <div class="text"><p>Join Before It Was Cool Retirement Community Today!</p></div>
       <div class="login-signup-container">
-            <button class="login-button"><a href='/login'>Login</a></button>
-            <button class="signup-button"><a href='/signup'>Sign Up</a></button>
+            <a href='/login'><button class="login-button">Login</button></a>
+            <a href='/signup'><button class="signup-button">Sign Up</button></a>
         </div>
     </div>
 </div>
@@ -162,7 +166,7 @@
     slideIndex++;
     if (slideIndex > slides.length) { slideIndex = 1 }
     slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 2000); // Change slide every 2 seconds
+    setTimeout(showSlides, 6000); // Change slide every 6 seconds
   }
 
   showSlides();
