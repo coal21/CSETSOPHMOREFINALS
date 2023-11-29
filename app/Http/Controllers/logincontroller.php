@@ -70,7 +70,8 @@ class logincontroller extends Controller
 
     public function adminHome()
     {
-        return view('admin.home');
+        $roles = Roles::all();
+        return view('Homepages.adminhome', ['roles' => $roles]);
     }
 
     public function supervisorHome()
