@@ -22,11 +22,6 @@ class signupcontroller extends Controller
 
     
     public function submit(Request $request){
-        // $request->validate([
-        //     'email' => 'required|email|unique',
-        //     'phone' => 'required|unique',
-        //     'family_code' => 'required|unique'
-        // ]);
         $role = $request->post('role');
 
         if ($role === 'Patient') {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ route::get('/home', [landingcontroller::class,'index']);
 
 
 // Login Routes
-route::get('/login', [logincontroller::class,'index']);
+route::get('/login', [loginController::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
@@ -46,8 +47,8 @@ Route::get('/approval', [admincontroller::class,'approval']);
 Route::post('/approve_account/{id}', [admincontroller::class, 'approve_account']);
 
 // signup routes
-Route::get('/signup', [signupcontroller::class,'index']);
+route::get('/signup', [signupcontroller::class,'index']);
 
 Route::post('/signup/submit', [SignupController::class, 'submit']);
 
-Route::view('/pending-approval', 'Homwefind.pending_approval');
+route::redirect('/pending-approval', 'Homwefind.pending_approval');

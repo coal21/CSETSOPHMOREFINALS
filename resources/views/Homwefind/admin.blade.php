@@ -17,5 +17,13 @@
         </tr>
         @endforeach
     </table>
+
+    <form id="create_access_level" action="/create_access_level" method="POST">
+        <label for="Roles">Role</label>
+        <input type="text" id="Role" name="Role" required>
+        <label for="AccessLV">Access Level</label>
+        <input type="text" id="AccessLV" name="AccessLV" required>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

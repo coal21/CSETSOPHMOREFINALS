@@ -18,6 +18,13 @@ class admincontroller extends Controller
         return view('Homepages.adminhome', ['roles' => $roles]);
     }
 
+    public function create(Request $request)
+    {
+        $role = Roles::create([
+            'name' => $request->input('newRole'),
+            'access_level' => $request->input('accessLV'),
+        ]);
+    }
     public function approval()
     {
         $caregivers = Caregiver::where('status', 'Pending')->get();
@@ -34,9 +41,4 @@ class admincontroller extends Controller
             'supervisors' => $supervisors
         ]);
     }
-    public function approve_account()
-    {
-        
-    }
 }
-
