@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\admincontroller;
-use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\doctorappointmentcontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
@@ -56,3 +56,7 @@ Route::post('/signup/submit', [signupController::class, 'submit']);
 Route::post('/signup/submit', [SignupController::class, 'submit']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
+
+// Appointment routes
+Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
+Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
