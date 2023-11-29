@@ -23,9 +23,9 @@ class signupcontroller extends Controller
     
     public function submit(Request $request){
         // $request->validate([
-        //     'email' => 'required|email|unique:patients|unique:doctors|unique:supervisors|unique:caregivers|unique:families',
-        //     'phone' => 'required|unique:patients|unique:doctors|unique:supervisors|unique:caregivers|unique:families',
-        //     'family_code' => 'required|unique:patients'
+        //     'email' => 'required|email|unique',
+        //     'phone' => 'required|unique',
+        //     'family_code' => 'required|unique'
         // ]);
         $role = $request->post('role');
 
