@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,10 @@ Route::view('/patient-home', 'Homepages.patienthome')->name('patient.home');
 Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family.home');
 
 Route::view('/family-home', 'Homepages.patienthome')->name('family.home');
+
+Route::post("/approve", [admincontroller::class,"approveAccount"]);
+
+Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
 
 // signup routes
