@@ -38,13 +38,7 @@ Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name
 
 Route::view('/supervisor-home', 'Homepages.supervisorhome')->name('supervisor.home');
 
-Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
-
-Route::view('/doctor-home', 'Homepages.doctorhome')->name('doctor.home');
-
-Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
-
-Route::view('/caregiver-home', 'Homepages.caregiverhome')->name('caregiver.home');
+Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/patient-home', [LoginController::class, 'patientHome'])->name('patient.home');
 
@@ -62,6 +56,6 @@ Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup/submit', [signupController::class, 'submit']);
+Route::post('/signup/submit/submit', [SignupController::class, 'submit']);
 
-route::redirect('/pending-approval', 'Homwefind.pending_approval');
+Route::view('/pending-approval', 'Homwefind.pending_approval');
