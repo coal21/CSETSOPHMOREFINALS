@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
 use Illuminate\Support\Facades\Route;
@@ -53,14 +54,14 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::view('/family-home', 'Homepages.patienthome')->name('family.home');
 
+Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
-Route::get('/approval', [admincontroller::class,'approval']);
+Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::post('/approve_account/{id}', [admincontroller::class, 'approve_account']);
 
 // signup routes
-Route::get('/signup', [signupcontroller::class,'index']);
+route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup/submit/submit', [SignupController::class, 'submit']);
+Route::post('/signup/submit', [signupController::class, 'submit']);
 
-Route::view('/pending-approval', 'Homwefind.pending_approval');
+route::redirect('/pending-approval', 'Homwefind.pending_approval');

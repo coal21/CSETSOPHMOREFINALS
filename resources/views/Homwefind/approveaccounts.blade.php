@@ -6,71 +6,139 @@
     <title>Test</title>
 </head>
 <body>
+
+
 <h1>Patients</h1>
-<table>
+    <table>
     @isset($patients)
-        @foreach($patients as $patient)
-            <tr>
-                <td>{{$patient->id}}</td>
-                <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-                <td>{{$patient->email}}</td>
-                <td>{{$patient->phone}}</td>
-            </tr>
+    @foreach($patients as $patient)
+        <tr>
+            <td>{{$patient->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$patient->id}}">
+                <input type="hidden" name="role_id" value="{{$patient->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
+        </tr>
         @endforeach
     @endisset
-</table>
+    </table>
+
+
+
     <h1>Caregivers</h1>
     <table>
     @isset($caregivers)
     @foreach($caregivers as $caregiver)
         <tr>
-            <td>{{$caregiver->id}}</td>
-            <td>{{$caregiver->first_name}} {{$caregiver->last_name}}</td>
-            <td>{{$caregiver->email}}</td>
-            <td>{{$caregiver->phone}}</td>
+            <td>{{$caregiver->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$caregiver->id}}">
+                <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
+
+
     <h1>Family Members</h1>
     <table>
-    @isset($family)
-    @foreach($family as $families)
+    @isset($families)
+    @foreach($families as $family)
         <tr>
-            <td>{{$families->id}}</td>
-            <td>{{$families->first_name}} {{$families->last_name}}</td>
-            <td>{{$families->email}}</td>
-            <td>{{$families->phone}}</td>
-            
+            <td>{{$family->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$family->id}}">
+                <input type="hidden" name="role_id" value="{{$family->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
+
+
     <h1>Doctors</h1>
     <table>
     @isset($doctors)
     @foreach($doctors as $doctor)
         <tr>
-            <td>{{$doctor->id}}</td>
-            <td>{{$doctor->first_name}} {{$doctor->last_name}}</td>
-            <td>{{$doctor->email}}</td>
-            <td>{{$doctor->phone}}</td>
+            <td>{{$doctor->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$doctor->id}}">
+                <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
-    <h1>Supervisors</h1>
+
+    <h1>Supervisor</h1>
     <table>
     @isset($supervisors)
     @foreach($supervisors as $supervisor)
         <tr>
-            <td>{{$supervisor->id}}</td>
-            <td>{{$supervisor->first_name}} {{$supervisor->last_name}}</td>
-            <td>{{$supervisor->email}}</td>
-            <td>{{$supervisor->phone}}</td>
+            <td>{{$supervisor->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$supervisor->id}}">
+                <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
+
+
 </body>
+
+    <script>
+
+        const forms = document.querySelectorAll('#form')
+       
+        for (const form of forms) {
+            const decisionInput = form.querySelector("#dec")
+            const submitButtons = form.querySelectorAll("#sub")
+
+            for (const button of submitButtons) {
+                button.addEventListener('click', () => {
+                    decisionInput.value = button.value;
+                })
+            }
+        }
+
+    </script>
 </html>
