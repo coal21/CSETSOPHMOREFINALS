@@ -61,8 +61,12 @@ Route::post('/approve_account/{id}', [admincontroller::class, 'approve_account']
 // signup routes
 Route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup/submit/submit', [SignupController::class, 'submit']);
+Route::post('/signup/submit', [SignupController::class, 'submit']);
 
 Route::view('/pending-approval', 'Homwefind.pending_approval');
 
 Route::view('/aboutus', 'Homwefind.aboutus');
+
+Route::view('/review', 'Homwefind.review');
+
+Route::view('/contactus', 'Homwefind.contactus');
