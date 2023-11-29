@@ -56,6 +56,6 @@ Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
-Route::post('/signup/submit/submit', [SignupController::class, 'submit']);
+Route::post('/signup/submit', [SignupController::class, 'submit']);
 
 Route::view('/pending-approval', 'Homwefind.pending_approval');
