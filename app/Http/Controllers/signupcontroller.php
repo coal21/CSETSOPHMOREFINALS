@@ -22,11 +22,11 @@ class signupcontroller extends Controller
 
     
     public function submit(Request $request){
-        $request->validate([
-            'email' => 'required|email|unique:patients|unique:doctors|unique:supervisors|unique:caregivers|unique:families',
-            'phone' => 'required|unique:patients|unique:doctors|unique:supervisors|unique:caregivers|unique:families',
-            'family_code' => 'required|unique:patients'
-        ]);
+        // $request->validate([
+        //     'email' => 'required|email|unique:patients|unique:doctors|unique:supervisors|unique:caregivers|unique:families',
+        //     'phone' => 'required|unique:patients|unique:doctors|unique:supervisors|unique:caregivers|unique:families',
+        //     'family_code' => 'required|unique:patients'
+        // ]);
         $role = $request->post('role');
 
         if ($role === 'Patient') {
