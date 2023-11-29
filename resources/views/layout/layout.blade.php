@@ -144,8 +144,8 @@ footer {
     
 <nav>
     <ul>
-        <li><button><a href="#home">Home</a></button></li>
-        <li><button><a href="#about">About</a></button></li>
+        <li><button><a href="\">Home</a></button></li>
+        <li><button><a href="\aboutus">About</a></button></li>
         <li><button><a href="#contact">Contact</a></button></li>
         <li><button><a href="#review">Leave a Review</a></button></li>
     </ul>
