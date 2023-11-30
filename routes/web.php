@@ -59,4 +59,4 @@ route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
-Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
+Route::post('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
