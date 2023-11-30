@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
 use App\Http\Controllers\landingcontroller;
@@ -31,8 +33,6 @@ route::get('/login', [loginController::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
-Route::get('/admin', [admincontroller::class,'show']);
-
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
 Route::view('/home', 'Homepages.patienthome');
@@ -44,6 +44,7 @@ Route::view('/supervisor-home', 'Homepages.supervisorhome')->name('supervisor.ho
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
 Route::view('/familyhome', 'Homepages.familyhome');
+
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
