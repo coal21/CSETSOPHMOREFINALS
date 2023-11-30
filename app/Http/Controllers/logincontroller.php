@@ -21,6 +21,7 @@ class logincontroller extends Controller
 
     public function login(Request $request)
 {
+    $roles = Roles::all();
     $role = $request->input('role');
     $email = $request->input('email');
     $password = $request->input('password');
@@ -60,7 +61,8 @@ class logincontroller extends Controller
 
     public function adminHome()
     {
-        return view('admin.home');
+        $roles = Roles::all();
+        return view('Homepages.adminhome', ['roles' => $roles]);
     }
 
     public function supervisorHome()
