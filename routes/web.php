@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
@@ -28,26 +30,26 @@ route::get('/home', [landingcontroller::class,'index']);
 
 
 // Login Routes
-route::get('/login', [loginController::class,'index']);
+route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
-Route::view('/home', 'Homepages.patienthome');
-
-Route::view('/familyhome', 'Homepages.familyhome');
-
-Route::view('/supervisor-home', 'Homepages.supervisorhome')->name('supervisor.home');
+Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
-Route::view('/familyhome', 'Homepages.familyhome');
+Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
+
+Route::get('/patient-home', [LoginController::class, 'patientHome'])->name('patient.home');
+
+Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family.home');
+
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/admin', [admincontroller::class,'show']);
 
 // signup routes
 Route::get('/signup', [signupcontroller::class,'index']);
