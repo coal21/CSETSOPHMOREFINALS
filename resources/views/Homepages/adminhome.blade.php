@@ -1,43 +1,5 @@
 @extends('layout.layout')
 
-<style>
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-  padding-top: 60px;
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto;
-  border: 1px solid #888;
-  width: 80%;
-  padding: 20px;
-}
-
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-</style>
 
 <script>
 window.onclick = function(event) {
@@ -45,10 +7,24 @@ window.onclick = function(event) {
     event.target.style.display = 'none';
   }
 };
+
+const forms = document.querySelectorAll('#form')
+       
+        for (const form of forms) {
+            const decisionInput = form.querySelector("#dec")
+            const submitButtons = form.querySelectorAll("#sub")
+
+            for (const button of submitButtons) {
+                button.addEventListener('click', () => {
+                    decisionInput.value = button.value;
+                })
+            }
+        }
+
 </script>
 
 @section('content')
-    <button class="btn3" onclick="document.getElementById('id01').style.display='block'">Menu 1</button>
+    <button class="btn3" onclick="document.getElementById('id01').style.display='block'">View/Create Roles</button>
     <div id="id01" class="modal">
         <div class="modal-content">
         <span class="close" onclick="document.getElementById('id01').style.display='none'">&times;</span>
@@ -64,78 +40,165 @@ window.onclick = function(event) {
         </table>
         </div>
     </div>
-    <button class="btn3" onclick="document.getElementById('id02').style.display='block'">Menu 1</button>
+    <button class="btn3" onclick="document.getElementById('id02').style.display='block'">Approve/Deny Accounts</button>
     <div id="id02" class="modal">
         <div class="modal-content">
         <span class="close" onclick="document.getElementById('id02').style.display='none'">&times;</span>
         <h1>Patients</h1>
-<table>
+    <table>
     @isset($patients)
-        @foreach($patients as $patient)
-            <tr>
-                <td>{{$patient->id}}</td>
-                <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-                <td>{{$patient->email}}</td>
-                <td>{{$patient->phone}}</td>
-            </tr>
+    @foreach($patients as $patient)
+        <tr>
+            <td>{{$patient->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$patient->id}}">
+                <input type="hidden" name="role_id" value="{{$patient->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
+        </tr>
         @endforeach
     @endisset
-</table>
+    </table>
+
+
+
     <h1>Caregivers</h1>
     <table>
     @isset($caregivers)
     @foreach($caregivers as $caregiver)
         <tr>
-            <td>{{$caregiver->id}}</td>
-            <td>{{$caregiver->first_name}} {{$caregiver->last_name}}</td>
-            <td>{{$caregiver->email}}</td>
-            <td>{{$caregiver->phone}}</td>
+            <td>{{$caregiver->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$caregiver->id}}">
+                <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
+
+
     <h1>Family Members</h1>
     <table>
-    @isset($family)
-    @foreach($family as $families)
+    @isset($families)
+    @foreach($families as $family)
         <tr>
-            <td>{{$families->id}}</td>
-            <td>{{$families->first_name}} {{$families->last_name}}</td>
-            <td>{{$families->email}}</td>
-            <td>{{$families->phone}}</td>
-            
+            <td>{{$family->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$family->id}}">
+                <input type="hidden" name="role_id" value="{{$family->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
+
+
     <h1>Doctors</h1>
     <table>
     @isset($doctors)
     @foreach($doctors as $doctor)
         <tr>
-            <td>{{$doctor->id}}</td>
-            <td>{{$doctor->first_name}} {{$doctor->last_name}}</td>
-            <td>{{$doctor->email}}</td>
-            <td>{{$doctor->phone}}</td>
+            <td>{{$doctor->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$doctor->id}}">
+                <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
-    <h1>Supervisors</h1>
+
+    <h1>Supervisor</h1>
     <table>
     @isset($supervisors)
     @foreach($supervisors as $supervisor)
         <tr>
-            <td>{{$supervisor->id}}</td>
-            <td>{{$supervisor->first_name}} {{$supervisor->last_name}}</td>
-            <td>{{$supervisor->email}}</td>
-            <td>{{$supervisor->phone}}</td>
+            <td>{{$supervisor->first_name}}<td>
+
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$supervisor->id}}">
+                <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
         </tr>
         @endforeach
     @endisset
     </table>
         </div>
     </div>
-    
+    <button class="btn3" onclick="document.getElementById('id03').style.display='block'">Search for Patients</button>
+<div id="id03" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
+        <form method="GET" action="/search-patients">
+            @csrf
+            <label for="searchBy">Search By:</label>
+            <select id="searchBy" name="searchBy">
+                <option value="all">All Patients</option>
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+            </select>
+            <input type="text" id="searchText" name="searchText" placeholder="Enter search text...">
+            <button type="submit">Search</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @isset($Apatients)
+                    @foreach($Apatients as $patient)
+                        <tr>
+                            <td>{{$patient->id}}</td>
+                            <td>{{$patient->first_name}}</td>
+                            <td>{{$patient->last_name}}</td>
+                        </tr>
+                    @endforeach
+                @endisset
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+        </div>
+    </div>
 
 @endsection

@@ -23,7 +23,18 @@ class signupcontroller extends Controller
     
     public function submit(Request $request){
         $role = $request->post('role');
-
+        $role = $request->post('role');
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+        $existingUser = Caregiver::where('email', $email)->orWhere('phone', $phone)->exists()
+            || Doctors::where('email', $email)->orWhere('phone', $phone)->exists()
+            || Supervisor::where('email', $email)->orWhere('phone', $phone)->exists()
+            || Patient::where('email', $email)->orWhere('phone', $phone)->exists()
+            || Family::where('email', $email)->orWhere('phone', $phone)->exists();
+        if ($existingUser) {
+            return back()->withInput()->withErrors(['message' => 'An account with this email or password already exists.']);
+        }
+    
         if ($role === 'Patient') {
             $patient = Patient::create([
             'first_name' => $request->input('firstName'),

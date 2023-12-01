@@ -61,8 +61,20 @@ class logincontroller extends Controller
 
     public function adminHome()
     {
+        $caregivers = Caregiver::where('status', 'Pending')->get();
+        $doctors = Doctors::where('status', 'Pending')->get();
+        $family = Family::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Pending')->get();
+        $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
-        return view('Homepages.adminhome', ['roles' => $roles]);
+        return view('Homepages.adminhome', [
+            'roles' => $roles,
+            'caregivers' => $caregivers, 
+            'doctors' => $doctors, 
+            'family' => $family, 
+            'patients' => $patients, 
+            'supervisors' => $supervisors
+        ]);
     }
 
     public function supervisorHome()
@@ -72,7 +84,7 @@ class logincontroller extends Controller
 
     public function doctorHome()
     {
-        return view('doctor.home');
+        return view('Homepages.doctorhome');
     }
 
     public function caregiverHome()
