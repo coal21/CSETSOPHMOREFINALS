@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\registrationapprovalcontroller;
@@ -58,3 +59,12 @@ route::redirect('/pending-approval', 'Homwefind.pending_approval');
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
+
+
+Route::get('/testing', [rostercontroller::class, 'schedule']);
+
+
+
+Route::view('/aboutus', 'Homwefind.aboutus');
+Route::view('/contactus', 'Homwefind.contactus');
+Route::view('/review', 'Homwefind.review');
