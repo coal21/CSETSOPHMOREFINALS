@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
@@ -33,13 +33,16 @@ route::get('/login', [loginController::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
+Route::get('/admin', [admincontroller::class,'show']);
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
 Route::view('/home', 'Homepages.patienthome');
 
 Route::view('/familyhome', 'Homepages.familyhome');
 
-Route::view('/supervisor-home', 'Homepages.supervisorhome')->name('supervisor.home');
+Route::get('/supervisor', [Supervisorcontroller::class,'show']);
+Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
+// Route::view('/supervisor-home', 'Homwefind.supervisor')->name('supervisor.home');
 
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
@@ -49,7 +52,6 @@ Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/admin', [admincontroller::class,'show']);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);

@@ -11,6 +11,7 @@ use App\Models\Doctors;
 use App\Models\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class logincontroller extends Controller
 {
@@ -42,7 +43,15 @@ class logincontroller extends Controller
             break;
         case 'Supervisor':
             $user = Supervisor::where('email', $email)->first();
-            $homeRoute = 'supervisor.home';
+            if ($user && Hash::check($password, $user->password)) {
+                // Authentication successful
+                Auth::login($user);
+                $homeRoute = 'supervisor.home';
+                return redirect()->route($homeRoute);
+            } else {
+                // Authentication failed
+                return redirect()->back()->withInput()->withErrors(['Invalid credentials']);
+            }
             break;
         case 'Doctor':
             $user = Doctors::where('email', $email)->first();
@@ -71,12 +80,13 @@ class logincontroller extends Controller
     public function adminHome()
     {
         $roles = Roles::all();
-        return view('Homepages.adminhome', ['roles' => $roles]);
+        return view('Homwefind.admin', ['roles' => $roles]);
     }
 
     public function supervisorHome()
     {
-        return view('supervisor.home');
+        $roles = Roles::all();
+        return view('Homwefind.supervisor', ['roles' => $roles]);
     }
 
     public function doctorHome()
