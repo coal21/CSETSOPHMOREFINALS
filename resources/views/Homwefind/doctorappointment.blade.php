@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Appointment</title>
-</head>
-<body>
+@extends('layout.layout')
+
+
+@section('content')
     <h2>Book an Appointment</h2>
 
     <table>
-        @foreach($roles as $role)
+        @foreach($Appointment as $Appointment)
+
         <tr>
             <td>{{$Appointment->patient_id}}</td>
-            <td>{{$Appointment->name}}</td>
             <td>{{$Appointment->appointment_date}}</td>
+            <td>{{$Appointment->comment}}</td>
             <td>{{$Appointment->doctor_id}}</td>
         </tr>
         @endforeach
@@ -29,8 +26,8 @@
 
             <br>
 
-            <label for="patient_name">Patient Name:</label>
-            <input type="text" name="patient_name" required>
+            <label for="doctor_id">Doctor_id:</label>
+            <input type="text" name="doctor_id" required>
 
             <br>
 
@@ -39,17 +36,21 @@
 
             <br>
 
-            <label for="doctor_id">Doctor Name:</label>
+            <label for="comment">comment</label>
+            <input type="text" name="comment" required>
+
+            <br>
+
+            <!-- <label for="doctor_id">Doctor Name:</label>
             <select name="doctor_id" required>
-                @foreach($doctors as $doctor)
-                    <option value="{{ $doctor }}">{{ $doctor }}</option>
+                @foreach($Appointment as $Appointments)
+                    <option value="{{ $Appointment }}">{{ $Appointment->doctor_id }}</option>
                 @endforeach
-            </select>
+            </select> -->
 
             <br>
 
             <button type="submit">Book Appointment</button>
         </form>
     </div>
-</body>
-</html>
+@endsection

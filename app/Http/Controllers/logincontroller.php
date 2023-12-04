@@ -11,6 +11,7 @@ use App\Models\Doctors;
 use App\Models\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class logincontroller extends Controller
 {
@@ -22,6 +23,7 @@ class logincontroller extends Controller
 
     public function login(Request $request)
 {
+    $roles = Roles::all();
     $role = $request->input('role');
     $email = $request->input('email');
     $password = $request->input('password');
@@ -42,7 +44,15 @@ class logincontroller extends Controller
             break;
         case 'Supervisor':
             $user = Supervisor::where('email', $email)->first();
-            $homeRoute = 'supervisor.home';
+            if ($user && Hash::check($password, $user->password)) {
+                // Authentication successful
+                Auth::login($user);
+                $homeRoute = 'supervisor.home';
+                return redirect()->route($homeRoute);
+            } else {
+                // Authentication failed
+                return redirect()->back()->withInput()->withErrors(['Invalid credentials']);
+            }
             break;
         case 'Doctor':
             $user = Doctors::where('email', $email)->first();
@@ -70,18 +80,31 @@ class logincontroller extends Controller
 
     public function adminHome()
     {
+        $caregivers = Caregiver::where('status', 'Pending')->get();
+        $doctors = Doctors::where('status', 'Pending')->get();
+        $family = Family::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Pending')->get();
+        $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
-        return view('Homepages.adminhome', ['roles' => $roles]);
+        return view('Homepages.adminhome', [
+            'roles' => $roles,
+            'caregivers' => $caregivers, 
+            'doctors' => $doctors, 
+            'family' => $family, 
+            'patients' => $patients, 
+            'supervisors' => $supervisors
+        ]);
     }
 
     public function supervisorHome()
     {
-        return view('supervisor.home');
+        $roles = Roles::all();
+        return view('Homwefind.supervisor', ['roles' => $roles]);
     }
 
     public function doctorHome()
     {
-        return view('doctor.home');
+        return view('Homepages.doctorhome');
     }
 
     public function caregiverHome()
