@@ -52,7 +52,9 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
+Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
 
+Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
