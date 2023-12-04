@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\registrationapprovalcontroller;
+use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\signupcontroller;
 use App\Http\Controllers\logincontroller;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +48,9 @@ Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
+Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
+
+Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
