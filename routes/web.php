@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\doctorController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
@@ -66,11 +67,15 @@ Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/search-patients', [admincontroller::class, 'searchPatients']);
+Route::get('/admin/search-patients', [admincontroller::class, 'adminsearchPatients']);
 
 Route::get('/signup', [signupcontroller::class,'index']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
+
+
+// Doctor routes
+Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
 
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);

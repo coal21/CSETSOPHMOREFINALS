@@ -163,7 +163,7 @@ const forms = document.querySelectorAll('#form')
 <div id="id03" class="modal">
     <div class="modal-content">
         <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
-        <form method="GET" action="/search-patients">
+        <form method="GET" action="/admin/search-patients">
             @csrf
             <label for="searchBy">Search By:</label>
             <select id="searchBy" name="searchBy">
