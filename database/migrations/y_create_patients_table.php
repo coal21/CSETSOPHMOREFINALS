@@ -25,8 +25,10 @@ return new class extends Migration
             $table->string('emergency_contact');
             $table->string('relationship');
             $table->decimal('amount_due', 5,2);
+
+            $table->string('group');
             
-            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('doctor_id')->nullable();
             $table->foreign('doctor_id')->references('id')->on('doctors');
 
             $table->unsignedBigInteger('role_id');

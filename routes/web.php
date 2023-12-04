@@ -53,7 +53,9 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
+Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
 
+Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
@@ -79,13 +81,3 @@ Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPat
 
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
-
-Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
-
-Route::get('/testing', [rostercontroller::class, 'schedule']);
-
-
-
-Route::view('/aboutus', 'Homwefind.aboutus');
-Route::view('/contactus', 'Homwefind.contactus');
-Route::view('/review', 'Homwefind.review');
