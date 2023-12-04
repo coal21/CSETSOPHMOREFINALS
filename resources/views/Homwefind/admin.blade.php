@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-</head>
+@extends('layout.layout')
+
+
+@section('content')
+
 <body>
     
     <table>
+    @isset($roles)
         @foreach($roles as $role)
         <tr>
             <td>{{$role->id}}</td>
@@ -16,6 +15,7 @@
             <td>{{$role->access_level}}</td>
         </tr>
         @endforeach
+    @endisset
     </table>
 
     <form id="create_access_level" action="/create_access_level" method="POST">
@@ -26,4 +26,4 @@
         <input type="submit" value="Submit">
     </form>
 </body>
-</html>
+@endsection

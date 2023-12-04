@@ -2,7 +2,6 @@
 
 
 @section('content')
-<h1>no</h1>
-
+<h1>supervisor home</h1>
 
 @endsection
