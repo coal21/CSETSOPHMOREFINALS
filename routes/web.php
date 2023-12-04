@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
@@ -43,7 +42,7 @@ Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
 
-Route::get('/supervisor', [SupervisorController::class,'show']);
+Route::get('/supervisor', [Supervisorcontroller::class,'show']);
 
 Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 
@@ -53,7 +52,9 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
+Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
 
+Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
@@ -80,9 +81,6 @@ Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmen
 
 Route::get('/testing', [rostercontroller::class, 'schedule']);
 
-Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
-
-Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
 
 Route::view('/aboutus', 'Homwefind.aboutus');

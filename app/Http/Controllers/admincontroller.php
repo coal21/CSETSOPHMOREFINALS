@@ -10,14 +10,36 @@ use App\Models\Family;
 use App\Models\Patient;
 use App\Models\Roster;
 use App\Models\Supervisor;
+use App\Models\Employee;
+
 class admincontroller extends Controller
 {
     public function show()
     {
+        $caregivers = Caregiver::where('status', 'Pending')->get();
+        $doctors = Doctors::where('status', 'Pending')->get();
+        $family = Family::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Pending')->get();
+        $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
-        return view('Homwefind.admin', ['roles' => $roles]);
+        return view('Homepages.adminhome', [
+            'roles' => $roles,
+            'caregivers' => $caregivers, 
+            'doctors' => $doctors, 
+            'family' => $family, 
+            'patients' => $patients, 
+            'supervisors' => $supervisors
+        ]);
     }
 
+    public function create(Request $request)
+    {
+        $role = Roles::create([
+            'name' => $request->input('newRole'),
+            'access_level' => $request->input('accessLV'),
+        ]);
+    }
+    
     public function awaiting()
     {
         $caregivers = Caregiver::where('status', 'Pending')->get();
@@ -25,8 +47,9 @@ class admincontroller extends Controller
         $family = Family::where('status', 'Pending')->get();
         $patients = Patient::where('status', 'Pending')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
-        
-        return view('Homwefind.approveaccounts', [
+        $roles = Roles::all();
+        return view('Homepages.adminhome', [
+            'roles' => $roles,
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
             'families' => $family, 
@@ -36,9 +59,7 @@ class admincontroller extends Controller
     }
 
     public function approveAccount(Request $request)
-
     {
-
         $id = $request->input('id');
         $role_id = $request->input('role_id');
 
@@ -65,6 +86,7 @@ class admincontroller extends Controller
                 break;
         }
 
+
         if ($finalDecision == "Yes") {
             $user->status = "Approved";
             $user->save();
@@ -75,4 +97,28 @@ class admincontroller extends Controller
         return $this->awaiting();
 
     }
+
+    public function searchPatients(Request $request)
+{
+    $roles = Roles::all();
+    $patients = Patient::where('status', 'Approved')->get();
+    $searchBy = $request->input('searchBy');
+    $searchText = $request->input('searchText');
+
+    $patients = [];
+
+    if ($searchBy === 'all') {
+        $Apatients = Patient::where('status', 'Approved')->get();
+    } else {
+        $Apatients = Patient::where('status', 'Approved')
+            ->where($searchBy, 'LIKE', "%$searchText%")
+            ->get();
+    }
+    $this->awaiting();
+    return view('Homepages.adminhome', [
+        'roles' => $roles,
+        'Apatients' => $Apatients, 
+    ]);
+}
+
 }
