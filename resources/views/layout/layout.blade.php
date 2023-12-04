@@ -129,6 +129,13 @@ footer {
 
 }    
 
+.logoFooter {
+    height:auto;
+    width:5%;
+    float:right;
+    padding:0;
+}
+
 .footer-container{
 
 }
@@ -181,10 +188,10 @@ footer {
     
 <nav>
     <ul>
-        <li><button><a href="#home">Home</a></button></li>
-        <li><button><a href="#about">About</a></button></li>
-        <li><button><a href="#contact">Contact</a></button></li>
-        <li><button><a href="#review">Leave a Review</a></button></li>
+        <li><button><a href="/">Home</a></button></li>
+        <li><button><a href="/aboutus">About</a></button></li>
+        <li><button><a href="/contactus">Contact</a></button></li>
+        <li><button><a href="/review">Leave a Review</a></button></li>
     </ul>
 </nav>
 
@@ -205,7 +212,7 @@ footer {
         <!-- Add your footer content here -->        
         <div class="footer-container">
            @yield('footer') 
-           <!-- <img class="logo" src="images\logos_black.png" alt="Before it Was Cool Logo"> -->
+           <img src="images/logowhiteFinal.png"  class="logoFooter" >
 
         <p>&copy; {{ date("Y") }} Before it Was Cool. All rights reserved.</p>
         </div>

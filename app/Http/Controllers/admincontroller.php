@@ -39,6 +39,7 @@ class admincontroller extends Controller
             'access_level' => $request->input('accessLV'),
         ]);
     }
+    
     public function awaiting()
     {
         $caregivers = Caregiver::where('status', 'Pending')->get();
@@ -51,7 +52,7 @@ class admincontroller extends Controller
             'roles' => $roles,
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
-            'family' => $family, 
+            'families' => $family, 
             'patients' => $patients, 
             'supervisors' => $supervisors
         ]);
@@ -85,10 +86,11 @@ class admincontroller extends Controller
                 break;
         }
 
-        if ($finalDecision = "Yes") {
+
+        if ($finalDecision == "Yes") {
             $user->status = "Approved";
             $user->save();
-        } elseif ($finalDecision = "No") {
+        } else {
             $user->delete();
         }
 
@@ -118,4 +120,5 @@ class admincontroller extends Controller
         'Apatients' => $Apatients, 
     ]);
 }
+
 }
