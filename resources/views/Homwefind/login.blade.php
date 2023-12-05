@@ -3,6 +3,14 @@
 
 @section('content')
 
+@if ($errors->has('error'))
+    <script>
+        window.onload = function() {
+            alert("{{ $errors->first('error') }}");
+        };
+    </script>
+@endif
+
     <main>        
         <div class="login" >
             <form action="{{ route('loginsubmit') }}" method="POST">
