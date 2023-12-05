@@ -13,4 +13,3 @@ class Admin extends Authenticatable
 
 }
 
-namespace App\Models;

@@ -39,7 +39,8 @@ class logincontroller extends Controller
                 return redirect()->route($homeRoute);
             } else {
                 // Authentication failed
-                return redirect()->back()->withInput()->withErrors(['Invalid credentials']);
+                $errorMessage = 'Invalid credentials';
+                return redirect()->route('login')->withInput()->with('error', $errorMessage);
             }
             break;
         case 'Supervisor':
@@ -51,12 +52,22 @@ class logincontroller extends Controller
                 return redirect()->route($homeRoute);
             } else {
                 // Authentication failed
-                return redirect()->back()->withInput()->withErrors(['Invalid credentials']);
+                $errorMessage = 'Invalid credentials';
+                return redirect()->route('login')->withInput()->with('error', $errorMessage);
             }
             break;
         case 'Doctor':
             $user = Doctors::where('email', $email)->first();
-            $homeRoute = 'doctor.home';
+            if ($user && Hash::check($password, $user->password)) {
+                // Authentication successful
+                Auth::login($user);
+                $homeRoute = 'doctor.home';
+                return redirect()->route($homeRoute);
+            } else {
+                // Authentication failed
+                $errorMessage = 'Invalid credentials';
+                return redirect()->route('login')->withInput()->with('error', $errorMessage);
+            }
             break;
         case 'Caregiver':
             $user = Caregiver::where('email', $email)->first();
@@ -67,8 +78,9 @@ class logincontroller extends Controller
             $homeRoute = 'patient.home';
             break;
 
-        default:
-        return redirect()->back()->withInput()->withErrors(['Invalid role']);
+            default:
+            $errorMessage = 'Invalid role';
+            return redirect()->route('login')->withInput()->with('error', $errorMessage);
     }
 // Code to check if account is approved-> && $user->status === 'Approved'
     if ($user && password_verify($password, $user->password)) {
@@ -104,8 +116,9 @@ class logincontroller extends Controller
 
     public function doctorHome()
     {
-        return view('Homepages.doctorhome');
-    }
+        $roles = Roles::all();
+        return view('Homepages.doctorhome', ['roles' => $roles]);
+        }
 
     public function caregiverHome()
     {
