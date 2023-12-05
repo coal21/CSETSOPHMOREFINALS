@@ -39,6 +39,8 @@ Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
+Route::get('/doctor', [admincontroller::class,'show']);
+
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
