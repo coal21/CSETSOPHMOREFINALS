@@ -43,8 +43,6 @@ Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
 
-Route::get('/supervisor', [Supervisorcontroller::class,'show']);
-
 Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 
 Route::get('/patient-home', [LoginController::class, 'patientHome'])->name('patient.home');
@@ -65,16 +63,18 @@ Route::post('/signup/submit', [signupController::class, 'submit']);
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 // Admin Routes
-Route::post("/approve", [admincontroller::class,"approveAccount"]);
+Route::post("/admin/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
 Route::get('/admin/search-patients', [admincontroller::class, 'adminsearchPatients']);
 
-Route::get('/signup', [signupcontroller::class,'index']);
-
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
+// Supervisor Routes
+Route::post("/supervisor/approve", [supervisorcontroller::class,"approveAccount"]);
+
+Route::get('/supervisor/search-patients', [supervisorcontroller::class, 'supervisorsearchPatients']);
 
 // Doctor routes
 Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);

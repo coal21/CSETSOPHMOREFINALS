@@ -51,7 +51,7 @@ const forms = document.querySelectorAll('#form')
         <tr>
             <td>{{$patient->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$patient->id}}">
                 <input type="hidden" name="role_id" value="{{$patient->role_id}}">
@@ -75,7 +75,7 @@ const forms = document.querySelectorAll('#form')
         <tr>
             <td>{{$caregiver->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$caregiver->id}}">
                 <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
@@ -98,7 +98,7 @@ const forms = document.querySelectorAll('#form')
         <tr>
             <td>{{$family->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$family->id}}">
                 <input type="hidden" name="role_id" value="{{$family->role_id}}">
@@ -121,7 +121,7 @@ const forms = document.querySelectorAll('#form')
         <tr>
             <td>{{$doctor->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$doctor->id}}">
                 <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
@@ -143,7 +143,7 @@ const forms = document.querySelectorAll('#form')
         <tr>
             <td>{{$supervisor->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$supervisor->id}}">
                 <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">

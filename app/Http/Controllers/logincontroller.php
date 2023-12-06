@@ -99,7 +99,7 @@ class logincontroller extends Controller
     public function supervisorHome()
     {
         $roles = Roles::all();
-        return view('Homwefind.supervisor', ['roles' => $roles]);
+        return view('Homepages.supervisorhome', ['roles' => $roles]);
     }
 
     public function doctorHome()
