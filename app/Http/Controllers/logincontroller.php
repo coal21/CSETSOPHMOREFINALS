@@ -70,13 +70,24 @@ class logincontroller extends Controller
             break;
         case 'Caregiver':
             $user = Caregiver::where('email', $email)->first();
-            $homeRoute = 'caregiver.home';
+            if ($user && Hash::check($password, $user->password)) {
+                // Authentication successful
+                Auth::login($user);
+                $homeRoute = 'caregiver.home';
+                return redirect()->route($homeRoute);
+            } else {
+                // Authentication failed
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);            }
             break;
         case 'Patient':
             $user = Patient::where('email', $email)->first();
             $homeRoute = 'patient.home';
             break;
-
+        case 'Family':
+            $user = Patient::where('email', $email)->first();
+            $homeRoute = 'patient.home';
+            break;
             default:
             $errorMessage = 'Invalid role';
             return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
@@ -117,11 +128,12 @@ class logincontroller extends Controller
     {
         $roles = Roles::all();
         return view('Homepages.doctorhome', ['roles' => $roles]);
-        }
+    }
 
     public function caregiverHome()
     {
-        return view('caregiver.home');
+        $roles = Roles::all();
+        return view('Homepages.caregiverhome', ['roles' => $roles]);    
     }
 
     public function patientHome()
@@ -131,6 +143,7 @@ class logincontroller extends Controller
 
     public function familyHome()
     {
-        return view('family.home');
+        $roles = Roles::all();
+        return view('Homepages.familyhome', ['roles' => $roles]);    
     }
 }

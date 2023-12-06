@@ -35,17 +35,17 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
-Route::get('/admin', [admincontroller::class,'show']);
+// Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
-Route::get('/doctor', [admincontroller::class,'show']);
+// Route::get('/doctor', [admincontroller::class,'show']);
 
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
 
-Route::get('/supervisor', [Supervisorcontroller::class,'show']);
+// Route::get('/supervisor', [Supervisorcontroller::class,'show']);
 
 Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 

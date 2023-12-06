@@ -13,6 +13,7 @@
       }
     }
     </script>
+    
     <main>
     <form id="signup" action="/signup/submit" method="POST">
     @csrf
