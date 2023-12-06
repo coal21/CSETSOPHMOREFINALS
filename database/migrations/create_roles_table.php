@@ -17,6 +17,15 @@ return new class extends Migration
             $table->string('access_level');
             $table->timestamps();
         });
+
+        DB::table('roles')->insert([
+            ['id' => 1, 'name' => 'Admin', 'access_level' => 1],
+            ['id' => 2, 'name' => 'Supervisor', 'access_level' => 2],
+            ['id' => 3, 'name' => 'Doctor', 'access_level' => 3],
+            ['id' => 4, 'name' => 'Caregiver', 'access_level' => 4],
+            ['id' => 5, 'name' => 'Patient', 'access_level' => 5],
+            ['id' => 6, 'name' => 'Family', 'access_level' => 5],
+        ]);
     }
 
     /**
