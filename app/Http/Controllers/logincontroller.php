@@ -23,6 +23,7 @@ class logincontroller extends Controller
 
     public function login(Request $request)
 {
+    $roles = Roles::all();
     $role = $request->input('role');
     $email = $request->input('email');
     $password = $request->input('password');
@@ -38,7 +39,8 @@ class logincontroller extends Controller
                 return redirect()->route($homeRoute);
             } else {
                 // Authentication failed
-                return redirect()->back()->withInput()->withErrors(['Invalid credentials']);
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
             }
             break;
         case 'Supervisor':
@@ -50,24 +52,45 @@ class logincontroller extends Controller
                 return redirect()->route($homeRoute);
             } else {
                 // Authentication failed
-                return redirect()->back()->withInput()->withErrors(['Invalid credentials']);
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
             }
             break;
         case 'Doctor':
             $user = Doctors::where('email', $email)->first();
-            $homeRoute = 'doctor.home';
+            if ($user && Hash::check($password, $user->password)) {
+                // Authentication successful
+                Auth::login($user);
+                $homeRoute = 'doctor.home';
+                return redirect()->route($homeRoute);
+            } else {
+                // Authentication failed
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);            }
             break;
         case 'Caregiver':
             $user = Caregiver::where('email', $email)->first();
-            $homeRoute = 'caregiver.home';
+            if ($user && Hash::check($password, $user->password)) {
+                // Authentication successful
+                Auth::login($user);
+                $homeRoute = 'caregiver.home';
+                return redirect()->route($homeRoute);
+            } else {
+                // Authentication failed
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);            }
             break;
         case 'Patient':
             $user = Patient::where('email', $email)->first();
             $homeRoute = 'patient.home';
             break;
-
-        default:
-        return redirect()->back()->withInput()->withErrors(['Invalid role']);
+        case 'Family':
+            $user = Patient::where('email', $email)->first();
+            $homeRoute = 'patient.home';
+            break;
+            default:
+            $errorMessage = 'Invalid role';
+            return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
     }
 // Code to check if account is approved-> && $user->status === 'Approved'
     if ($user && password_verify($password, $user->password)) {
@@ -79,8 +102,20 @@ class logincontroller extends Controller
 
     public function adminHome()
     {
+        $caregivers = Caregiver::where('status', 'Pending')->get();
+        $doctors = Doctors::where('status', 'Pending')->get();
+        $family = Family::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Pending')->get();
+        $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
-        return view('Homwefind.admin', ['roles' => $roles]);
+        return view('Homepages.adminhome', [
+            'roles' => $roles,
+            'caregivers' => $caregivers, 
+            'doctors' => $doctors, 
+            'family' => $family, 
+            'patients' => $patients, 
+            'supervisors' => $supervisors
+        ]);
     }
 
     public function supervisorHome()
@@ -91,12 +126,14 @@ class logincontroller extends Controller
 
     public function doctorHome()
     {
-        return view('doctor.home');
+        $roles = Roles::all();
+        return view('Homepages.doctorhome', ['roles' => $roles]);
     }
 
     public function caregiverHome()
     {
-        return view('caregiver.home');
+        $roles = Roles::all();
+        return view('Homepages.caregiverhome', ['roles' => $roles]);    
     }
 
     public function patientHome()
@@ -106,6 +143,7 @@ class logincontroller extends Controller
 
     public function familyHome()
     {
-        return view('family.home');
+        $roles = Roles::all();
+        return view('Homepages.familyhome', ['roles' => $roles]);    
     }
 }
