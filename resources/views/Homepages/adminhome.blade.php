@@ -8,19 +8,6 @@ window.onclick = function(event) {
   }
 };
 
-const forms = document.querySelectorAll('#form')
-       
-        for (const form of forms) {
-            const decisionInput = form.querySelector("#dec")
-            const submitButtons = form.querySelectorAll("#sub")
-
-            for (const button of submitButtons) {
-                button.addEventListener('click', () => {
-                    decisionInput.value = button.value;
-                })
-            }
-        }
-
 </script>
 
 @section('content')
@@ -180,7 +167,7 @@ const forms = document.querySelectorAll('#form')
 <div id="id03" class="modal">
     <div class="modal-content">
         <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
-        <form method="GET" action="/admin/search-patients">
+        <form method="GET" action="/search-patients">
             @csrf
             <label for="searchBy">Search By:</label>
             <select id="searchBy" name="searchBy">
@@ -217,5 +204,23 @@ const forms = document.querySelectorAll('#form')
 
         </div>
     </div>
+
+
+    <script>
+
+const forms = document.querySelectorAll('#form')
+       
+for (const form of forms) {
+    const decisionInput = form.querySelector("#dec")
+    const submitButtons = form.querySelectorAll("#sub")
+
+    for (const button of submitButtons) {
+        button.addEventListener('click', () => {
+            decisionInput.value = button.value;
+        })
+    }
+}
+
+</script>
 
 @endsection
