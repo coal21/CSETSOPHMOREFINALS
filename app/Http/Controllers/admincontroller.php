@@ -87,7 +87,7 @@ class admincontroller extends Controller
         }
 
 
-        if ($finalDecision == "Yes") {
+        if ($finalDecision === "Yes") {
             $user->status = "Approved";
             $user->save();
         } else {
@@ -98,7 +98,7 @@ class admincontroller extends Controller
 
     }
 
-    public function searchPatients(Request $request)
+    public function adminsearchPatients(Request $request)
 {
     $roles = Roles::all();
     $patients = Patient::where('status', 'Approved')->get();

@@ -32,7 +32,7 @@ class signupcontroller extends Controller
             || Patient::where('email', $email)->orWhere('phone', $phone)->exists()
             || Family::where('email', $email)->orWhere('phone', $phone)->exists();
         if ($existingUser) {
-            return back()->withInput()->withErrors(['message' => 'An account with this email or password already exists.']);
+            return back()->withInput()->withErrors(['message' => 'An account with this email or phone already exists.']);
         }
     
         if ($role === 'Patient') {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\doctorController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
@@ -34,15 +35,17 @@ route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
-Route::get('/admin', [admincontroller::class,'show']);
+// Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
+
+// Route::get('/doctor', [admincontroller::class,'show']);
 
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
 
-Route::get('/supervisor', [Supervisorcontroller::class,'show']);
+// Route::get('/supervisor', [Supervisorcontroller::class,'show']);
 
 Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 
@@ -74,19 +77,12 @@ Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/search-patients', [admincontroller::class, 'searchPatients']);
+Route::get('/admin/search-patients', [admincontroller::class, 'adminsearchPatients']);
 
 Route::get('/signup', [signupcontroller::class,'index']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
-// Appointment routes
-Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
-Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
-
-Route::get('/testing', [rostercontroller::class, 'schedule']);
-
-Route::view('/aboutus', 'Homwefind.aboutus');
-Route::view('/contactus', 'Homwefind.contactus');
-Route::view('/review', 'Homwefind.review');
+// Doctor routes
+Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
