@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('relationship');
             $table->decimal('amount_due', 5,2);
 
+            $table->date('lastPaymentUpate');
+
             $table->string('group');
             
             $table->unsignedBigInteger('doctor_id')->nullable();

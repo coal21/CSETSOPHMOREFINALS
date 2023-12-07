@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\doctorController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
