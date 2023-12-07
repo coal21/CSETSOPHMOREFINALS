@@ -83,6 +83,8 @@ window.onclick = function(event) {
                 @csrf
                 <input type="hidden" name="id" value="{{$caregiver->id}}">
                 <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
+                <input type="hidden" name="first_name" value="{{$caregiver->first_name}}">
+                <input type="hidden" name="salary" value="5">
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
@@ -129,6 +131,8 @@ window.onclick = function(event) {
                 @csrf
                 <input type="hidden" name="id" value="{{$doctor->id}}">
                 <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
+                <input type="hidden" name="first_name" value="{{$doctor->first_name}}">
+                <input type="hidden" name="salary" value="5">
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
@@ -151,6 +155,8 @@ window.onclick = function(event) {
                 @csrf
                 <input type="hidden" name="id" value="{{$supervisor->id}}">
                 <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
+                <input type="hidden" name="first_name" value="{{$supervisor->first_name}}">
+                <input type="hidden" name="salary" value="5">
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>

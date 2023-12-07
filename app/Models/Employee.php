@@ -12,5 +12,6 @@ class Employee extends Model
         'id',
         'first_name',
         'role_id',
+        'salary',
         ];
 }

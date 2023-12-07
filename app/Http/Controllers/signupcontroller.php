@@ -9,6 +9,7 @@ use App\Models\Supervisor;
 use App\Models\Patient;
 use App\Models\Doctors;
 use App\Models\Roles;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 
