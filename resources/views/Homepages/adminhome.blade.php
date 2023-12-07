@@ -200,6 +200,20 @@ window.onclick = function(event) {
         </table>
     </div>
 </div>
+
+    <!-- Button to open the Create Rosters modal -->
+<button class="btn5" onclick="document.getElementById('id05').style.display='block'">Create Rosters</button>
+
+    <!-- Create Rosters modal -->
+    <div id="id05" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('id05').style.display='none'">&times;</span>
+            <!-- Include the roster.blade.php content here -->
+            <iframe src="{{ route('Homwefind.roster') }}" width="100%" height="50%"></iframe>
+        </div>
+    </div>
+
+</div>
 </div>
 
         </div>
