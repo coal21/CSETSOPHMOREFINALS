@@ -32,11 +32,11 @@ class admincontroller extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function createRole(Request $request)
     {
         $role = Roles::create([
-            'name' => $request->input('newRole'),
-            'access_level' => $request->input('accessLV'),
+            'name' => $request->input('roleName'),
+            'access_level' => $request->input('accessLevel'),
         ]);
     }
     

@@ -34,10 +34,27 @@ const forms = document.querySelectorAll('#form')
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
             <td>{{$role->access_level}}</td>
-            <td>{{$role->access_level}}</td>
         </tr>
         @endforeach
         </table>
+
+        <br>
+
+        <form method="POST" action="/createRole">
+            @csrf
+            <label for="">Role Name: </label>
+            <input type="text" name="roleName">
+
+            <br>
+
+            <label for="">Access Level</label>
+            <input type="text" name="accessLevel">
+
+            <br>
+
+            <button type="submit">Create</button>
+        </form>
+
         </div>
     </div>
     <button class="btn3" onclick="document.getElementById('id02').style.display='block'">Approve/Deny Accounts</button>
