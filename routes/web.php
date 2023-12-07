@@ -56,6 +56,12 @@ Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
 
 Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
+
+// Role creation
+
+Route::post("/createRole", [admincontroller::class, 'createRole']);
+
+
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
@@ -80,8 +86,6 @@ Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'appointmentsubmit'])->name('submit.appointment');
 
 Route::get('/testing', [rostercontroller::class, 'schedule']);
-
-
 
 Route::view('/aboutus', 'Homwefind.aboutus');
 Route::view('/contactus', 'Homwefind.contactus');
