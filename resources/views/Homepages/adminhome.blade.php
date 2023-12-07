@@ -8,19 +8,6 @@ window.onclick = function(event) {
   }
 };
 
-const forms = document.querySelectorAll('#form')
-       
-        for (const form of forms) {
-            const decisionInput = form.querySelector("#dec")
-            const submitButtons = form.querySelectorAll("#sub")
-
-            for (const button of submitButtons) {
-                button.addEventListener('click', () => {
-                    decisionInput.value = button.value;
-                })
-            }
-        }
-
 </script>
 
 @section('content')
@@ -34,10 +21,27 @@ const forms = document.querySelectorAll('#form')
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
             <td>{{$role->access_level}}</td>
-            <td>{{$role->access_level}}</td>
         </tr>
         @endforeach
         </table>
+
+        <br>
+
+        <form method="POST" action="/createRole">
+            @csrf
+            <label for="">Role Name: </label>
+            <input type="text" name="roleName">
+
+            <br>
+
+            <label for="">Access Level</label>
+            <input type="text" name="accessLevel">
+
+            <br>
+
+            <button type="submit">Create</button>
+        </form>
+
         </div>
     </div>
     <button class="btn3" onclick="document.getElementById('id02').style.display='block'">Approve/Deny Accounts</button>
@@ -163,7 +167,7 @@ const forms = document.querySelectorAll('#form')
 <div id="id03" class="modal">
     <div class="modal-content">
         <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
-        <form method="GET" action="/admin/search-patients">
+        <form method="GET" action="/search-patients">
             @csrf
             <label for="searchBy">Search By:</label>
             <select id="searchBy" name="searchBy">
@@ -200,5 +204,23 @@ const forms = document.querySelectorAll('#form')
 
         </div>
     </div>
+
+
+    <script>
+
+const forms = document.querySelectorAll('#form')
+       
+for (const form of forms) {
+    const decisionInput = form.querySelector("#dec")
+    const submitButtons = form.querySelectorAll("#sub")
+
+    for (const button of submitButtons) {
+        button.addEventListener('click', () => {
+            decisionInput.value = button.value;
+        })
+    }
+}
+
+</script>
 
 @endsection
