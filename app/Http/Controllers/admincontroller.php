@@ -68,6 +68,8 @@ class admincontroller extends Controller
         $usersRole = Roles::where('id', $role_id)->first();
         $user = null;
 
+        dd($finalDecision);
+
         switch ($usersRole->name) {
             case 'Caregiver':
                 $user = Caregiver::findorFail($id);
