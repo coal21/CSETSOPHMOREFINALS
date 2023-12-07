@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class rostercontroller extends Controller
 {
+    public function showRosterForm()
+    {
+        return view('Homwefind/roster'); 
+    }
 
     public function createRoster(Request $request) {
 
@@ -25,7 +29,14 @@ class rostercontroller extends Controller
 
         $roster->save();
 
-        return "Created roster successfully";
+        // Fetch the created roster (you may customize this based on your actual database structure)
+        $createdRoster = Roster::find($roster->id);
+
+        // Pass the roster data to the view
+        return view('Homwefind.roster')->with('createdRoster', $createdRoster);
+
 
     }
+
+    
 }

@@ -55,7 +55,12 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
-Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
+Route::view('/roster', [rostercontroller::class, 'showRosterForm'])->name('roster.form');
+Route::post('/createRoster', [rostercontroller::class, 'createRoster'])->name('createRoster');
+
+// // Use a POST route for handling form submissions
+Route::get('/Homwefind/roster', [rostercontroller::class, 'ShowRosterForm'])->name('Homwefind.roster');
+
 
 Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
