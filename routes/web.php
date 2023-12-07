@@ -6,6 +6,7 @@ use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
+use App\Http\Controllers\employeecontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
