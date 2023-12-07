@@ -6,6 +6,7 @@ use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
+use App\Http\Controllers\employeecontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
@@ -83,3 +84,6 @@ Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPat
 
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
+
+// employee routes
+route::get('/employees', [employeecontroller::class,'show']);
