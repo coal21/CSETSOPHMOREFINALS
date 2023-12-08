@@ -83,6 +83,8 @@ window.onclick = function(event) {
                 @csrf
                 <input type="hidden" name="id" value="{{$caregiver->id}}">
                 <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
+                <input type="hidden" name="first_name" value="{{$caregiver->first_name}}">
+                <input type="hidden" name="salary" value="5">
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
@@ -129,6 +131,8 @@ window.onclick = function(event) {
                 @csrf
                 <input type="hidden" name="id" value="{{$doctor->id}}">
                 <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
+                <input type="hidden" name="first_name" value="{{$doctor->first_name}}">
+                <input type="hidden" name="salary" value="5">
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
@@ -151,6 +155,8 @@ window.onclick = function(event) {
                 @csrf
                 <input type="hidden" name="id" value="{{$supervisor->id}}">
                 <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
+                <input type="hidden" name="first_name" value="{{$supervisor->first_name}}">
+                <input type="hidden" name="salary" value="5">
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
@@ -199,6 +205,20 @@ window.onclick = function(event) {
             </tbody>
         </table>
     </div>
+</div>
+
+    <!-- Button to open the Create Rosters modal -->
+<button class="btn5" onclick="document.getElementById('id05').style.display='block'">Create Rosters</button>
+
+    <!-- Create Rosters modal -->
+    <div id="id05" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('id05').style.display='none'">&times;</span>
+            <!-- Include the roster.blade.php content here -->
+            <iframe src="{{ route('Homwefind.roster') }}" width="100%" height="50%"></iframe>
+        </div>
+    </div>
+
 </div>
 </div>
 
