@@ -60,12 +60,6 @@ Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
 
 Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
-
-// Role creation
-
-Route::post("/createRole", [admincontroller::class, 'createRole']);
-
-
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
@@ -87,3 +81,10 @@ route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 // Doctor routes
 Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
+
+// Appointment routes
+Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
+
+// employee routes
+route::get('/employees_sal', [employeecontroller::class,'show']);
+route::POST('/employees_sal', [employeecontroller::class,'new_salary']);

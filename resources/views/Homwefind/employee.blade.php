@@ -8,7 +8,6 @@
             @isset($employee)
                 @foreach($employee as $employee)
                     <tr>
-                        <td><input type="checkbox" name="selected_caregivers[]" value="{{$caregiver->id}}"></td>
                         <td>{{$employee->id}}</td>
                         <td>{{$employee->first_name}}</td>
                         <td>{{$employee->role_id}}</td>

@@ -10,7 +10,15 @@ class employeecontroller extends Controller
     {
 
     $employee = Employee::all();
-        return view('Homepages.caregiverhome', ['employee' => $employee]);
+        return view('Homwefind.employee', ['employee' => $employee]);
 
+    }
+
+    public function create(Request $request)
+    {
+        $employee = Employee::create([
+            'new_salary' => $request->input('new_salary'),
+            'emp_ID' => $request->input('emp_ID'),
+        ]);
     }
 }
