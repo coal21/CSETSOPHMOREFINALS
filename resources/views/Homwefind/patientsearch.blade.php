@@ -15,11 +15,13 @@
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Emergency Contact</th>
+                    <th>Relationship</th>
                 </tr>
             </thead>
             <tbody>
-                @isset($Apatients)
-                    @foreach($Apatients as $patient)
+                @isset($patients)
+                    @foreach($patients as $patient)
                         <tr>
                             <td>{{$patient->id}}</td>
                             <td>{{$patient->first_name}}</td>
@@ -41,8 +43,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @isset($Apatients)
-                                    @foreach($Apatients as $patient)
+                                @isset($patients)
+                                    @foreach($patients as $patient)
                                         <tr>
                                             <td>{{$patient->id}}</td>
                                             <td>{{$patient->first_name}} {{$patient->last_name}}</td>

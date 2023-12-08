@@ -68,7 +68,7 @@ route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/admin/search-patients', [admincontroller::class, 'adminsearchPatients']);
+Route::get('/search-patients', [admincontroller::class, 'searchPatients']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
@@ -93,6 +93,6 @@ Route::get('/caregiver/search-patients', [caregivercontroller::class, 'caregiver
 //Misc feature routes
 Route::get('/Homwefind/approveaccounts', [registrationapprovalcontroller::class, 'show'])->name('Homwefind.approveaccounts');
 
-Route::get('/Homwefind/patientsearch', [patientsearchcontroller::class, 'show'])->name('Homwefind.patientsearch');
+Route::get('/Homwefind/patientsearch', [admincontroller::class, 'search'])->name('Homwefind.patientsearch');
 
 Route::post("/approve", [registrationapprovalcontroller::class,"approveAccount"]);

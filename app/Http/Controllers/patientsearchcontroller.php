@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Roles;
+use App\Models\Caregiver;
+use App\Models\Doctors;
+use App\Models\Family;
+use App\Models\Patient;
+use App\Models\Roster;
+use App\Models\Supervisor;
+use App\Models\Employee;
 
 class patientsearchcontroller extends Controller
 {
-    public function show()
+    public function search()
     {
         $patients = Patient::where('status', 'Approved')->get();
         $roles = Roles::all();
@@ -15,7 +23,7 @@ class patientsearchcontroller extends Controller
         ]);
     }
 
-    public function adminsearchPatients(Request $request)
+    public function searchPatients(Request $request)
     {
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
@@ -46,4 +54,5 @@ class patientsearchcontroller extends Controller
             'patients' => $patients, 
             'supervisors' => $supervisors,
         ]);
+}
 }

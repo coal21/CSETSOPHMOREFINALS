@@ -95,8 +95,14 @@ class registrationapprovalcontroller extends Controller
             $user->delete();
         }
 
-        return $this->awaiting();
-
+        return view('Homwefind.approveaccounts', [
+            'roles' => $roles,
+            'caregivers' => $caregivers, 
+            'doctors' => $doctors, 
+            'family' => $family, 
+            'patients' => $patients, 
+            'supervisors' => $supervisors,
+        ]);
     }
 
 }
