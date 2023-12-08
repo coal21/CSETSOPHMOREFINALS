@@ -1,36 +1,28 @@
-@extends('layout.layout')
-
-
-@section('content')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
 </head>
 <body>
-
-
 <h1>Patients</h1>
+@isset($patients)
     <table>
-    @isset($patients)
-    @foreach($patients as $patient)
+        @foreach($patients as $patient)
         <tr>
-            <td>{{$patient->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
+            <td>{{$patient->first_name}}</td>
+            <form method="POST" action="/admin/approve" class="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$patient->id}}">
                 <input type="hidden" name="role_id" value="{{$patient->role_id}}">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
+                <input type="hidden" name="decision" class="decision" value="">
+                <input type="submit" class="submit" value="Yes"/>
+                <input type="submit" class="submit" value="No"/>
             </form>
-    
         </tr>
         @endforeach
-    @endisset
     </table>
+    @endisset
+    
 
 
 
@@ -41,7 +33,7 @@
         <tr>
             <td>{{$caregiver->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$caregiver->id}}">
                 <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
@@ -64,7 +56,7 @@
         <tr>
             <td>{{$family->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$family->id}}">
                 <input type="hidden" name="role_id" value="{{$family->role_id}}">
@@ -83,11 +75,12 @@
     <h1>Doctors</h1>
     <table>
     @isset($doctors)
+
     @foreach($doctors as $doctor)
         <tr>
             <td>{{$doctor->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$doctor->id}}">
                 <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
@@ -109,7 +102,7 @@
         <tr>
             <td>{{$supervisor->first_name}}<td>
 
-            <form method="POST" action="/approve" id="form">
+            <form method="POST" action="/admin/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$supervisor->id}}">
                 <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
@@ -123,8 +116,8 @@
         @endforeach
     @endisset
     </table>
-
-
+        </div>
+    </div>
 </body>
 
     <script>

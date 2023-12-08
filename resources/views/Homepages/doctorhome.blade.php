@@ -18,10 +18,7 @@ const forms = document.querySelectorAll('#form')
                 })
             }
         }
-
 </script>
-
-
 @section('content')
 <form method="GET" action="/doctor/search-patients">
             @csrf
@@ -42,7 +39,6 @@ const forms = document.querySelectorAll('#form')
                     <th>Last Name</th>
                     <th>Emergency Contact</th>
                     <th>Relationship</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -54,34 +50,6 @@ const forms = document.querySelectorAll('#form')
                             <td>{{$patient->last_name}}</td>
                             <td>{{$patient->emergency_contact}}</td>
                             <td>{{$patient->relationship}}</td>
-                            <td>   
-                                <button class="btn3" onclick="document.getElementById('id01').style.display='block'">Additional info</button>
-                                <div id="id01" class="modal">
-                                <div class="modal-content">
-                                <span class="close" onclick="document.getElementById('id01').style.display='none'">&times;</span>
-                                <table>
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Group</th>
-                                    <th>Admission date</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @isset($Apatients)
-                                    @foreach($Apatients as $patient)
-                                        <tr>
-                                            <td>{{$patient->id}}</td>
-                                            <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-                                            <td>{{$patient->created_at}}</td>
-                                        @endforeach
-                                    @endisset
-                                </tbody>
-                                </table>
-                                </div>
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
                 @endisset

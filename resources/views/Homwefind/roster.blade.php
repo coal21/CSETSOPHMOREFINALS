@@ -34,8 +34,6 @@
         <td>{{$roster->caregiver_3_first_name}} {{$roster->caregiver_3_last_name}}</td>    
         <td>{{$roster->caregiver_4_first_name}} {{$roster->caregiver_4_last_name}}</td>
     </tr>
-    
-</table>
 </table>
 
 

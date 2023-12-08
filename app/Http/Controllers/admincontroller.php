@@ -19,7 +19,7 @@ class admincontroller extends Controller
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
         $family = Family::where('status', 'Pending')->get();
-        $patients = Patient::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Approved')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
         return view('Homepages.adminhome', [
@@ -28,7 +28,7 @@ class admincontroller extends Controller
             'doctors' => $doctors, 
             'family' => $family, 
             'patients' => $patients, 
-            'supervisors' => $supervisors
+            'supervisors' => $supervisors,
         ]);
     }
 
@@ -45,7 +45,7 @@ class admincontroller extends Controller
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
         $family = Family::where('status', 'Pending')->get();
-        $patients = Patient::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Approved')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
         return view('Homepages.adminhome', [
@@ -58,48 +58,13 @@ class admincontroller extends Controller
         ]);
     }
 
-    public function approveAccount(Request $request)
-    {
-        $id = $request->input('id');
-        $role_id = $request->input('role_id');
-
-        $finalDecision = $request->input('decision');
-
-        $usersRole = Roles::where('id', $role_id)->first();
-        $user = null;
-
-        switch ($usersRole->name) {
-            case 'Caregiver':
-                $user = Caregiver::findorFail($id);
-                break;
-            case 'Doctor':
-                $user = Doctors::findorFail($id);
-                break;
-            case 'Supervisor':
-                $user = Supervisor::findorFail($id);
-                break;
-            case 'Patient':
-                $user = Patient::findorFail($id);
-                break;
-            case 'Family':
-                $user = Family::findorFail($id);
-                break;
-        }
-
-
-        if ($finalDecision === "Yes") {
-            $user->status = "Approved";
-            $user->save();
-        } else {
-            $user->delete();
-        }
-
-        return $this->awaiting();
-
-    }
-
     public function adminsearchPatients(Request $request)
 {
+    $caregivers = Caregiver::where('status', 'Pending')->get();
+    $doctors = Doctors::where('status', 'Pending')->get();
+    $family = Family::where('status', 'Pending')->get();
+    $patients = Patient::where('status', 'Approved')->get();
+    $supervisors = Supervisor::where('status', 'Pending')->get();
     $roles = Roles::all();
     $patients = Patient::where('status', 'Approved')->get();
     $searchBy = $request->input('searchBy');
@@ -108,16 +73,21 @@ class admincontroller extends Controller
     $patients = [];
 
     if ($searchBy === 'all') {
-        $Apatients = Patient::where('status', 'Approved')->get();
+        $patients = Patient::where('status', 'Approved')->get();
     } else {
-        $Apatients = Patient::where('status', 'Approved')
+        $patients = Patient::where('status', 'Approved')
             ->where($searchBy, 'LIKE', "%$searchText%")
             ->get();
     }
-    $this->awaiting();
-    return view('Homepages.adminhome', [
+    return view('Homwefind.patientsearch', [
         'roles' => $roles,
-        'Apatients' => $Apatients, 
+        'patients' => $patients, 
+        'roles' => $roles,
+        'caregivers' => $caregivers, 
+        'doctors' => $doctors, 
+        'family' => $family, 
+        'patients' => $patients, 
+        'supervisors' => $supervisors,
     ]);
 }
 

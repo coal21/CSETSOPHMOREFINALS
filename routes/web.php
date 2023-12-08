@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\doctorController;
+use App\Http\Controllers\caregivercontroller;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
@@ -29,17 +30,16 @@ Route::get('/', function () {
 
 route::get('/home', [landingcontroller::class,'index']);
 
-
 // Login Routes
 route::get('/login', [logincontroller::class,'index']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('loginsubmit');
 
-Route::get('/admin', [admincontroller::class,'show']);
+// Route::get('/admin', [admincontroller::class,'show']);
 
 Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.home');
 
-Route::get('/doctor', [admincontroller::class,'show']);
+// Route::get('/doctor', [admincontroller::class,'show']);
 
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
@@ -65,7 +65,6 @@ Route::post('/signup/submit', [signupController::class, 'submit']);
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 // Admin Routes
-Route::post("/admin/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
@@ -83,3 +82,17 @@ Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPat
 
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
+
+Route::post('/appointment/submit', [doctorappointmentcontroller::class, 'submit']);
+
+
+//Cargiver Routes
+Route::get('/caregiver/search-patients', [caregivercontroller::class, 'caregiversearchPatients']);
+
+
+//Misc feature routes
+Route::get('/Homwefind/approveaccounts', [registrationapprovalcontroller::class, 'show'])->name('Homwefind.approveaccounts');
+
+Route::get('/Homwefind/patientsearch', [patientsearchcontroller::class, 'show'])->name('Homwefind.patientsearch');
+
+Route::post("/approve", [registrationapprovalcontroller::class,"approveAccount"]);
