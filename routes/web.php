@@ -84,11 +84,5 @@ Route::get('/signup', [signupcontroller::class,'index']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
-
-// Payment Routes
-
-Route::get("/updatePayment", [PaymentController::class, 'update']);
-
-
 // Doctor routes
 Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
