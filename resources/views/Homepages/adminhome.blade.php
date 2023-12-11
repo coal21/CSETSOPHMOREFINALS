@@ -8,19 +8,6 @@ window.onclick = function(event) {
   }
 };
 
-const forms = document.querySelectorAll('#form')
-       
-        for (const form of forms) {
-            const decisionInput = form.querySelector("#dec")
-            const submitButtons = form.querySelectorAll("#sub")
-
-            for (const button of submitButtons) {
-                button.addEventListener('click', () => {
-                    decisionInput.value = button.value;
-                })
-            }
-        }
-
 </script>
 
 @section('content')
@@ -42,6 +29,24 @@ const forms = document.querySelectorAll('#form')
         </tr>
         @endforeach
         </table>
+
+        <br>
+
+        <form method="POST" action="/createRole">
+            @csrf
+            <label for="">Role Name: </label>
+            <input type="text" name="roleName">
+
+            <br>
+
+            <label for="">Access Level</label>
+            <input type="text" name="accessLevel">
+
+            <br>
+
+            <button type="submit">Create</button>
+        </form>
+
         </div>
     </div>
     <button class="btn3" onclick="document.getElementById('id02').style.display='block'">Approve/Deny Accounts</button>
@@ -56,45 +61,50 @@ const forms = document.querySelectorAll('#form')
     <div class="modal-content">
         <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
         <iframe src="{{ route('Homwefind.patientsearch') }}" width="100%" height="50%"></iframe>
-
-
     </div>
     </div>
         <button class="btn3" onclick="document.getElementById('id04').style.display='block'">Create Appointments</button>
             <div id="id04" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="document.getElementById('id04').style.display='none'">&times;</span>
-                <form method="POST" action="/appointment/submit">
-                @csrf
-        
-                <label for="patient_id">Select Patient:</label>
-                <select name="patient_id" id="patient_id">
-                    @foreach($patients as $patient)
-                        <option value="{{ $patient->id }}">{{ $patient->first_name }} {{ $patient->last_name }}</option>
-                    @endforeach
-                </select>
-                <br><br>
-
-                <label for="doctor_id">Select Doctor:</label>
-                <select name="doctor_id" id="doctor_id">
-                    @foreach($doctors as $doctor)
-                        <option value="{{ $doctor->id }}">{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
-                    @endforeach
-                </select>
-                <br><br>
-
-                <label for="appointment_date">Appointment Date:</label>
-                <input type="date" name="appointment_date" id="appointment_date">
-                <br><br>
-
-                <label for="comment">Comment:</label>
-                <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
-                <br><br>
-
-                <input type="submit" value="Submit Appointment">
-            </form>
-            </div>
-        </div>
+                <iframe src="{{ route('Homwefind.doctorappointment') }}" width="100%" height="50%"></iframe>
+    </div>
 </div>
+
+    <!-- Button to open the Create Rosters modal -->
+<button class="btn5" onclick="document.getElementById('id05').style.display='block'">Create Rosters</button>
+
+    <!-- Create Rosters modal -->
+    <div id="id05" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('id05').style.display='none'">&times;</span>
+            <!-- Include the roster.blade.php content here -->
+            <iframe src="{{ route('Homwefind.roster') }}" width="100%" height="50%"></iframe>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const forms = document.querySelectorAll('#form')
+       
+for (const form of forms) {
+    const decisionInput = form.querySelector("#dec")
+    const submitButtons = form.querySelectorAll("#sub")
+
+    for (const button of submitButtons) {
+        button.addEventListener('click', () => {
+            decisionInput.value = button.value;
+        })
+    }
+}
+
+</script>
 
 @endsection

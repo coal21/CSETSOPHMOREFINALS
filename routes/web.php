@@ -7,6 +7,7 @@ use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
+use App\Http\Controllers\employeecontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\registrationapprovalcontroller;
 use App\Http\Controllers\signupcontroller;
@@ -53,9 +54,20 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
-Route::post("/createRoster", [rostercontroller::class,"createRoster"]);
+Route::view('/roster', [rostercontroller::class, 'showRosterForm'])->name('roster.form');
+Route::post('/createRoster', [rostercontroller::class, 'createRoster'])->name('createRoster');
+
+// // Use a POST route for handling form submissions
+Route::get('/Homwefind/roster', [rostercontroller::class, 'ShowRosterForm'])->name('Homwefind.roster');
+
 
 Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
+
+
+// Role creation
+
+Route::post("/createRole", [admincontroller::class, 'createRole']);
+
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
@@ -83,7 +95,7 @@ Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPat
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
-Route::post('/appointment/submit', [doctorappointmentcontroller::class, 'submit']);
+Route::post('/appointment/submit', [doctorappointmentcontroller::class, 'submit'])->name('submit-appointment');
 
 
 //Cargiver Routes
@@ -96,3 +108,5 @@ Route::get('/Homwefind/approveaccounts', [registrationapprovalcontroller::class,
 Route::get('/Homwefind/patientsearch', [admincontroller::class, 'search'])->name('Homwefind.patientsearch');
 
 Route::post("/approve", [registrationapprovalcontroller::class,"approveAccount"]);
+
+Route::get('/Homwefind/doctorappointment', [doctorappointmentcontroller::class, 'show'])->name('Homwefind.doctorappointment');

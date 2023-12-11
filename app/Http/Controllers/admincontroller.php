@@ -32,12 +32,13 @@ class admincontroller extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function createRole(Request $request)
     {
         $role = Roles::create([
-            'name' => $request->input('newRole'),
-            'access_level' => $request->input('accessLV'),
+            'name' => $request->input('roleName'),
+            'access_level' => $request->input('accessLevel'),
         ]);
+        return $this -> show();
     }
     
     public function awaiting()
@@ -75,7 +76,6 @@ class admincontroller extends Controller
         $patients = Patient::where('status', 'Approved')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
-        $patients = Patient::where('status', 'Approved')->get();
         $searchBy = $request->input('searchBy');
         $searchText = $request->input('searchText');
     

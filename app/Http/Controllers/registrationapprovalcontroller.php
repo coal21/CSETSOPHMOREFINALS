@@ -20,7 +20,7 @@ class registrationapprovalcontroller extends Controller
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
         $family = Family::where('status', 'Pending')->get();
-        $patients = Patient::where('status', 'Pending')->get();
+        $Ppatients = Patient::where('status', 'Pending')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
         return view('Homwefind.approveaccounts', [
@@ -28,16 +28,8 @@ class registrationapprovalcontroller extends Controller
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
             'family' => $family, 
-            'patients' => $patients, 
+            'Ppatients' => $Ppatients, 
             'supervisors' => $supervisors,
-        ]);
-    }
-
-    public function create(Request $request)
-    {
-        $role = Roles::create([
-            'name' => $request->input('newRole'),
-            'access_level' => $request->input('accessLV'),
         ]);
     }
     
@@ -46,7 +38,7 @@ class registrationapprovalcontroller extends Controller
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
         $family = Family::where('status', 'Pending')->get();
-        $patients = Patient::where('status', 'Pending')->get();
+        $Ppatients = Patient::where('status', 'Pending')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
         return view('Homwefind.approveaccounts', [
@@ -54,7 +46,7 @@ class registrationapprovalcontroller extends Controller
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
             'families' => $family, 
-            'patients' => $patients, 
+            'Ppatients' => $Ppatients, 
             'supervisors' => $supervisors
         ]);
     }
@@ -63,7 +55,8 @@ class registrationapprovalcontroller extends Controller
     {
         $id = $request->input('id');
         $role_id = $request->input('role_id');
-
+        $first_name = $request->input('first_name');
+        $salary = $request->input('salary');
         $finalDecision = $request->input('decision');
 
         $usersRole = Roles::where('id', $role_id)->first();
@@ -89,20 +82,18 @@ class registrationapprovalcontroller extends Controller
 
 
         if ($finalDecision == "Yes") {
+            $employee = Employee::create([
+                'first_name' => $request->input('first_name'),
+                'salary' => $request->input('salary'),
+                'role_id' => $request->input('role_id'),
+            ]);
             $user->status = "Approved";
             $user->save();
         } else {
             $user->delete();
         }
 
-        return view('Homwefind.approveaccounts', [
-            'roles' => $roles,
-            'caregivers' => $caregivers, 
-            'doctors' => $doctors, 
-            'family' => $family, 
-            'patients' => $patients, 
-            'supervisors' => $supervisors,
-        ]);
-    }
+        return $this->awaiting();
 
+    }
 }

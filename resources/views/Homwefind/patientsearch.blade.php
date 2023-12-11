@@ -1,4 +1,4 @@
-<form method="GET" action="/admin/search-patients">
+<form method="GET" action="/Homwefind/patientsearch">
             @csrf
             <label for="searchBy">Search By:</label>
             <select id="searchBy" name="searchBy">
@@ -28,7 +28,7 @@
                             <td>{{$patient->last_name}}</td>
                             <td>{{$patient->emergency_contact}}</td>
                             <td>{{$patient->relationship}}</td>
-                            <td>   
+                            <td>
                                 <button class="btn3" onclick="document.getElementById('AddInfo').style.display='block'">Additional info</button>
                                 <div id="AddInfo" class="modal">
                                 <div class="modal-content">

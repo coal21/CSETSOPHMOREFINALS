@@ -83,17 +83,20 @@ class logincontroller extends Controller
         case 'Patient':
             $user = Patient::where('email', $email)->first();
             $homeRoute = 'patient.home';
+            session(['name' => $user->first_name . ' ' . $user->last_name]);
+            session(['id' => $user->id]);
+            session(['role' => $user->role_id]);
             break;
         case 'Family':
             $user = Patient::where('email', $email)->first();
-            $homeRoute = 'patient.home';
+            $homeRoute = 'family.home';
             break;
             default:
             $errorMessage = 'Invalid role';
             return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
     }
-// Code to check if account is approved-> && $user->status === 'Approved'
-    if ($user && password_verify($password, $user->password )) {
+// Code to check if account is approved->
+    if ($user && password_verify($password, $user->password  && $user->status === 'Approved')) {
         return redirect()->route($homeRoute);
     } else {
         return back()->withErrors(['message' => 'Invalid credentials or status not approved']);

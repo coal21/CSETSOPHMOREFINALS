@@ -5,12 +5,12 @@
 </head>
 <body>
 <h1>Patients</h1>
-@isset($patients)
+@isset($Ppatients)
     <table>
-        @foreach($patients as $patient)
+        @foreach($Ppatients as $patient)
         <tr>
             <td>{{$patient->first_name}}</td>
-            <form method="POST" action="/admin/approve" class="form">
+            <form method="POST" action="/approve" class="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$patient->id}}">
                 <input type="hidden" name="role_id" value="{{$patient->role_id}}">
@@ -33,7 +33,7 @@
         <tr>
             <td>{{$caregiver->first_name}}<td>
 
-            <form method="POST" action="/admin/approve" id="form">
+            <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$caregiver->id}}">
                 <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
@@ -56,7 +56,7 @@
         <tr>
             <td>{{$family->first_name}}<td>
 
-            <form method="POST" action="/admin/approve" id="form">
+            <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$family->id}}">
                 <input type="hidden" name="role_id" value="{{$family->role_id}}">
@@ -80,7 +80,7 @@
         <tr>
             <td>{{$doctor->first_name}}<td>
 
-            <form method="POST" action="/admin/approve" id="form">
+            <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$doctor->id}}">
                 <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
@@ -102,7 +102,7 @@
         <tr>
             <td>{{$supervisor->first_name}}<td>
 
-            <form method="POST" action="/admin/approve" id="form">
+            <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$supervisor->id}}">
                 <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
