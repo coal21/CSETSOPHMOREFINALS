@@ -1,14 +1,7 @@
 @extends('layout.layout')
 
 
-<script>
-window.onclick = function(event) {
-  if (event.target.className === 'modal') {
-    event.target.style.display = 'none';
-  }
-};
 
-</script>
 
 @section('content')
     <button class="btn3" onclick="document.getElementById('id01').style.display='block'">View/Create Roles</button>
@@ -91,7 +84,6 @@ window.onclick = function(event) {
 
 
 <script>
-
 const forms = document.querySelectorAll('#form')
        
 for (const form of forms) {
@@ -104,6 +96,12 @@ for (const form of forms) {
         })
     }
 }
+
+window.onclick = function(event) {
+  if (event.target.className === 'modal') {
+    event.target.style.display = 'none';
+  }
+};
 
 </script>
 

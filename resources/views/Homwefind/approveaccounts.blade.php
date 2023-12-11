@@ -12,11 +12,12 @@
             <td>{{$patient->first_name}}</td>
             <form method="POST" action="/approve" class="form">
                 @csrf
-                <input type="hidden" name="id" value="{{$patient->id}}">
-                <input type="hidden" name="role_id" value="{{$patient->role_id}}">
-                <input type="hidden" name="decision" class="decision" value="">
-                <input type="submit" class="submit" value="Yes"/>
-                <input type="submit" class="submit" value="No"/>
+                <td><input type="hidden" name="first_name" value="{{$patient->first_name}}"></td>
+                <td><input type="hidden" name="id" value="{{$patient->id}}"></td>
+                <td><input type="hidden" name="role_id" value="{{$patient->role_id}}"></td>
+                <td><input type="hidden" name="decision" class="decision" value=""></td>
+                <td><input type="submit" class="submit" value="Yes"/></td>
+                <td><input type="submit" class="submit" value="No"/></td>
             </form>
         </tr>
         @endforeach

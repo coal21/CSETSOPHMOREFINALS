@@ -81,7 +81,7 @@ class registrationapprovalcontroller extends Controller
         }
 
 
-        if ($finalDecision == "Yes") {
+        if ($finalDecision = "Yes") {
             $employee = Employee::create([
                 'first_name' => $request->input('first_name'),
                 'salary' => $request->input('salary'),
@@ -89,7 +89,7 @@ class registrationapprovalcontroller extends Controller
             ]);
             $user->status = "Approved";
             $user->save();
-        } else {
+        } elseif ($finalDecision = "No"){
             $user->delete();
         }
 
