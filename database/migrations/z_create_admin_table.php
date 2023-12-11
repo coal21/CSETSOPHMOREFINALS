@@ -23,7 +23,15 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+
+        DB::table('admin')->insert
+        ([
+            ['id' => 1, 'email' => 'Admin@Admin.com', 'phone' => '1234567890', 'password' => '1234', 'status' => 'approved', 'role_id' => '1'],
+        ]);
     }
+
+
 
     /**
      * Reverse the migrations.
