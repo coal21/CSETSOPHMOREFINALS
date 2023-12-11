@@ -34,7 +34,7 @@ class PaymentController extends Controller
          ->whereDate('appointment_date', '<=', $currentDate)
          ->get();
 
-         $prescrptions = Prescription::where('patient_id', $patient_id)
+         $prescrptions = Prescription::whesre('patient_id', $patient_id)
          ->whereDate('appointment_date', '>=', $lastPaymentDate)
          ->whereDate('appointment_date', '<=', $currentDate)
          ->get();
