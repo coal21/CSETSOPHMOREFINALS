@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Patient;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -26,7 +27,9 @@ return new class extends Migration
             $table->string('relationship');
             $table->decimal('amount_due', 5,2);
 
-            $table->string('group');
+            $table->date('lastPaymentDate')->default(date('Y-m-d'));
+
+            $table->string('group')->default(Patient::getRandomGroupLetter());
             
             $table->unsignedBigInteger('doctor_id')->nullable();
             $table->foreign('doctor_id')->references('id')->on('doctors');
