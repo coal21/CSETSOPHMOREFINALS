@@ -208,7 +208,7 @@ window.onclick = function(event) {
 </div>
 
     <!-- Button to open the Create Rosters modal -->
-<button class="btn5" onclick="document.getElementById('id05').style.display='block'">Create Rosters</button>
+<button class="btn5" onclick="document.getElementById('id05').style.display='block'">Rosters</button>
 
     <!-- Create Rosters modal -->
     <div id="id05" class="modal">
@@ -219,6 +219,7 @@ window.onclick = function(event) {
         </div>
     </div>
 
+    
 </div>
 </div>
 
