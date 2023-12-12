@@ -4,6 +4,7 @@ use App\Http\Controllers\doctorController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\caregiverhomecontroller;
 use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
 use App\Http\Controllers\employeecontroller;
@@ -92,4 +93,9 @@ Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
 // employee routes
 route::get('/employees_sal', [employeecontroller::class,'show']);
-route::POST('/employees_sal', [employeecontroller::class,'new_salary']);
+route::post('/employees_sal', [employeecontroller::class,'update'])->name('update');
+Route::get('/employees_sal', [employeecontroller::class,'search'])->name('search');
+
+
+// Caregiver routes
+Route::get('/caregiver-home', [caregiverhomecontroller::class, 'displayUserData'])->name('caregiver.home');

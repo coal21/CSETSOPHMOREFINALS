@@ -94,18 +94,19 @@ class logincontroller extends Controller
     }
 // Code to check if account is approved-> && $user->status === 'Approved'
     if ($user && password_verify($password, $user->password)) {
-        session([
-            'user_id' => $user->id,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'email' => $user->email,
-            'role' => $role,
-        ]);
+        // session([
+        //     'user_id' => $user->id,
+        //     'first_name' => $user->first_name,
+        //     'last_name' => $user->last_name,
+        //     'email' => $user->email,
+        //     'role' => $role,
+        // ]);
         return redirect()->route($homeRoute);
     } else {
         return back()->withErrors(['message' => 'Invalid credentials or status not approved']);
     }
 }
+
 
     public function adminHome()
     {
