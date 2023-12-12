@@ -1,4 +1,23 @@
+<style>
+    .btn5{
+    margin-right:750px;
+    float:right;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 25%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+</style>
 @extends('layout.layout')
+
 <script>
 window.onclick = function(event) {
   if (event.target.className === 'modal') {
@@ -18,11 +37,13 @@ const forms = document.querySelectorAll('#form')
                 })
             }
         }
-
 </script>
-
-
 @section('content')
+<<<<<<< HEAD
+
+
+
+
 <form method="GET" action="/doctor/search-patients">
             @csrf
             <label for="searchBy">Search By:</label>
@@ -34,6 +55,7 @@ const forms = document.querySelectorAll('#form')
             <input type="text" id="searchText" name="searchText" placeholder="Enter search text...">
             <button type="submit">Search</button>
         </form>
+        
         <table>
             <thead>
                 <tr>
@@ -88,4 +110,16 @@ const forms = document.querySelectorAll('#form')
             </tbody>
         </table>
 
+=======
+<div>
+    Welcome, {{ session('name') }}!
+</div>
+<button class="btn3" onclick="document.getElementById('id03').style.display='block'">Search for Patients</button>
+<div id="id03" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
+        <iframe src="{{ route('Homwefind.patientsearch') }}" width="100%" height="50%"></iframe>
+    </div>
+</div>
+>>>>>>> 5db42127e058fc8826cec5d14b515e554f3b1f13
 @endsection
