@@ -2,7 +2,10 @@
 
 
 use App\Http\Controllers\AboutUsController;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 17657fd5851425eeab0040bb81925fe19cd1ea96
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\caregivercontroller;
 use App\Http\Controllers\PaymentController;
