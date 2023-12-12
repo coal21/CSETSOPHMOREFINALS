@@ -30,11 +30,15 @@ const forms = document.querySelectorAll('#form')
         <div class="modal-content">
         <span class="close" onclick="document.getElementById('id01').style.display='none'">&times;</span>
         <table>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Level</td>
+        </tr>
         @foreach($roles as $role)
         <tr>
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
-            <td>{{$role->access_level}}</td>
             <td>{{$role->access_level}}</td>
         </tr>
         @endforeach

@@ -88,15 +88,37 @@ class logincontroller extends Controller
                 return redirect()->route($homeRoute);
             } else {
                 $errorMessage = 'Invalid credentials, please try again';
-                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);            }
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
+                }
             break;
         case 'Patient':
             $user = Patient::where('email', $email)->first();
+            if ($user && Hash::check($password, $user->password && $user->status === 'Approved')) {
+                Auth::login($user);
+                session_start();
+                session(['name' => $user->first_name . ' ' . $user->last_name]);
+                session(['id' => $user->id]);
+                session(['role' => $user->role_id]);
             $homeRoute = 'patient.home';
+            return redirect()->route($homeRoute);
+            } else {
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);
+            }
             break;
         case 'Family':
             $user = Patient::where('email', $email)->first();
+            if ($user && Hash::check($password, $user->password && $user->status === 'Approved')) {
+                Auth::login($user);
+                session_start();
+                session(['name' => $user->first_name . ' ' . $user->last_name]);
+                session(['id' => $user->id]);
+                session(['role' => $user->role_id]);
             $homeRoute = 'family.home';
+            return redirect()->route($homeRoute);
+            } else {
+                $errorMessage = 'Invalid credentials, please try again';
+                return redirect()->back()->withInput()->withErrors(['error' => $errorMessage]);            }
             break;
             default:
     }
