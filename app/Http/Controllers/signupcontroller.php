@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reports;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Caregiver;
 use App\Models\Family;
@@ -53,6 +54,7 @@ class signupcontroller extends Controller
             'doctor_id' => null,
             'role_id' => 5,
             ]);
+
             return view('Homwefind.pending_approval');
         }
         elseif ($role === 'Doctor') {
@@ -92,6 +94,11 @@ class signupcontroller extends Controller
             'status' => "Pending",
             'role_id' => 4,
             ]);
+
+            $report = Reports::create([
+                'caregiver_id' => $caregiver->id,
+            ]);
+
             return view('Homwefind.pending_approval');
         }
         elseif ($role === 'Family') {

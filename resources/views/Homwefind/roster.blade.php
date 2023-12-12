@@ -11,27 +11,37 @@
         <table>
             <tr>
                 <td>Date</td>
-                <td>Supervisor</td>
-                <td>Doctor</td>
-                <td>Group A Caregiver</td>
-                <td>Group B Caregiver</td>
-                <td>Group C Caregiver</td>
-                <td>Group D Caregiver</td>
+                <td>Supervisor ID</td>
+                <td>DoctoID</td>
+                <td>Caregiver 1 ID</td>
+                <td>Caregiver 2 ID</td>
+                <td>Caregiver 3 ID</td>
+                <td>Caregiver 4 ID</td>
             </tr>
 
             @foreach($rosters as $roster)
                 <tr>
                     <td>{{$roster->roster_date}}</td>
-                    <td>{{$roster->supervisor_first_name}} {{$roster->supervisor_last_name}}</td>
-                    <td>{{$roster->doctor_id}} {{$roster->doctor_id}}</td>
-                    <td>{{$roster->caregiver_1_first_name}} {{$roster->caregiver_1_last_name}}</td>
-                    <td>{{$roster->caregiver_2_first_name}} {{$roster->caregiver_2_last_name}}</td>
-                    <td>{{$roster->caregiver_3_first_name}} {{$roster->caregiver_3_last_name}}</td>    
-                    <td>{{$roster->caregiver_4_first_name}} {{$roster->caregiver_4_last_name}}</td>
+                    <td>{{$roster->supervisor_first_name}} {{$roster->supervisor_id}}</td>
+                    <td>{{$roster->doctor_first_name}} {{$roster->doctor_id}}</td>
+                    <td>{{$roster->caregiver_1_first_name}} {{$roster->caregiver_1_id}}</td>
+                    <td>{{$roster->caregiver_2_first_name}} {{$roster->caregiver_2_id}}</td>
+                    <td>{{$roster->caregiver_3_first_name}} {{$roster->caregiver_3_id}}</td>    
+                    <td>{{$roster->caregiver_4_first_name}} {{$roster->caregiver_4_id}}</td>
                 </tr>
             @endforeach
         </table>
     @endisset
+
+    <h2>Find Roster By Date </h2>
+    <form action="{{ route('filterRosters') }}" method="POST">
+    @csrf 
+    <label for="selected_date">Select Date:</label>
+    <input type="date" id="selected_date" name="selected_date" required><br>
+    <button type="submit">View Rosters</button>
+    </form>
+
+
 
     @isset($createdRoster)
         <h2>Created Roster</h2>
@@ -42,11 +52,7 @@
         <p>Caregiver 2 ID: {{ $createdRoster->caregiver_2_id }}</p>
         <p>Caregiver 3 ID: {{ $createdRoster->caregiver_3_id }}</p>
         <p>Caregiver 4 ID: {{ $createdRoster->caregiver_4_id }}</p>
-
-
-        <!-- Display other roster fields as needed -->
     @endisset
-
 
     <!-- Form for Creating New Roster -->
     <h2>Create New Roster</h2>
@@ -54,7 +60,7 @@
         @csrf <!-- Laravel CSRF token -->
 
         <label for="roster_date">Date:</label>
-        <input type="date" id="roster_date" name="roster_date" required><br>
+    <input type="date" id="roster_date" name="roster_date" required><br>
 
     <label for="supervisor_id">Supervisor ID:</label>
     <input type="text" id="supervisor_id" name="supervisor_id" required><br>

@@ -12,10 +12,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
@@ -23,6 +23,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
+        '29ffe97919493792170d47eb03a68da9' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/helpers.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
@@ -165,11 +166,13 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'C' => 
         array (
             'Cron\\' => 5,
+            'Codeat3\\BladePepicons\\' => 22,
             'Carbon\\' => 7,
         ),
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'BladeUI\\Icons\\' => 14,
         ),
         'A' => 
         array (
@@ -507,6 +510,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Codeat3\\BladePepicons\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codeat3/blade-pepicons/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -514,6 +521,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'BladeUI\\Icons\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src',
         ),
         'App\\' => 
         array (
@@ -529,12 +540,19 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Controllers\\PrescriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrescriptionController.php',
         'App\\Http\\Controllers\\SupervisorController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupervisorController.php',
         'App\\Http\\Controllers\\admincontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/admincontroller.php',
+        'App\\Http\\Controllers\\caregiverhomecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/caregiverhomecontroller.php',
+        'App\\Http\\Controllers\\PrescriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrescriptionController.php',
+        'App\\Http\\Controllers\\SupervisorController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupervisorController.php',
+        'App\\Http\\Controllers\\admincontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/admincontroller.php',
         'App\\Http\\Controllers\\caregivercontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/caregivercontroller.php',
         'App\\Http\\Controllers\\doctorappointmentcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/doctorappointmentcontroller.php',
         'App\\Http\\Controllers\\doctorcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/doctorcontroller.php',
         'App\\Http\\Controllers\\employeecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/employeecontroller.php',
+        'App\\Http\\Controllers\\doctorcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/doctorcontroller.php',
+        'App\\Http\\Controllers\\employeecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/employeecontroller.php',
         'App\\Http\\Controllers\\landingcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/landingcontroller.php',
         'App\\Http\\Controllers\\logincontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/logincontroller.php',
+        'App\\Http\\Controllers\\newrostercontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/newrostercontroller.php',
         'App\\Http\\Controllers\\newrostercontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/newrostercontroller.php',
         'App\\Http\\Controllers\\patienthomecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/patienthomecontroller.php',
         'App\\Http\\Controllers\\patientsearchcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/patientsearchcontroller.php',
@@ -552,6 +570,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Appointment' => __DIR__ . '/../..' . '/app/Models/Appointment.php',
         'App\\Models\\Caregiver' => __DIR__ . '/../..' . '/app/Models/Caregiver.php',
         'App\\Models\\Doctors' => __DIR__ . '/../..' . '/app/Models/Doctors.php',
@@ -559,6 +578,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Models\\Family' => __DIR__ . '/../..' . '/app/Models/Family.php',
         'App\\Models\\Patient' => __DIR__ . '/../..' . '/app/Models/Patient.php',
         'App\\Models\\Prescription' => __DIR__ . '/../..' . '/app/Models/Prescription.php',
+        'App\\Models\\Reports' => __DIR__ . '/../..' . '/app/Models/Reports.php',
         'App\\Models\\Roles' => __DIR__ . '/../..' . '/app/Models/Roles.php',
         'App\\Models\\Roster' => __DIR__ . '/../..' . '/app/Models/Roster.php',
         'App\\Models\\Supervisor' => __DIR__ . '/../..' . '/app/Models/Supervisor.php',
@@ -568,6 +588,18 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'BladeUI\\Icons\\BladeIconsServiceProvider' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/BladeIconsServiceProvider.php',
+        'BladeUI\\Icons\\Components\\Icon' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Components/Icon.php',
+        'BladeUI\\Icons\\Components\\Svg' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Components/Svg.php',
+        'BladeUI\\Icons\\Concerns\\RendersAttributes' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Concerns/RendersAttributes.php',
+        'BladeUI\\Icons\\Console\\CacheCommand' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Console/CacheCommand.php',
+        'BladeUI\\Icons\\Console\\ClearCommand' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Console/ClearCommand.php',
+        'BladeUI\\Icons\\Exceptions\\CannotRegisterIconSet' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Exceptions/CannotRegisterIconSet.php',
+        'BladeUI\\Icons\\Exceptions\\SvgNotFound' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Exceptions/SvgNotFound.php',
+        'BladeUI\\Icons\\Factory' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Factory.php',
+        'BladeUI\\Icons\\Generation\\IconGenerator' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Generation/IconGenerator.php',
+        'BladeUI\\Icons\\IconsManifest' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/IconsManifest.php',
+        'BladeUI\\Icons\\Svg' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Svg.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -666,6 +698,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Carbon\\TranslatorImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorImmutable.php',
         'Carbon\\TranslatorStrongTypeInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
+        'Codeat3\\BladePepicons\\BladePepiconsServiceProvider' => __DIR__ . '/..' . '/codeat3/blade-pepicons/src/BladePepiconsServiceProvider.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

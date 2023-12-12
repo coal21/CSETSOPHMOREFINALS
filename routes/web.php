@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\caregivercontroller;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
@@ -54,8 +56,13 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
+
 Route::view('/roster', [rostercontroller::class, 'showRosterForm'])->name('roster.form');
 Route::post('/createRoster', [rostercontroller::class, 'createRoster'])->name('createRoster');
+Route::get('/filterRosters', [rostercontroller::class, 'filterRosters'])->name('filterRosters');
+Route::post('/filterRosters', [rostercontroller::class, 'filterRosters'])->name('filterRosters');
+
+
 
 // // Use a POST route for handling form submissions
 Route::get('/Homwefind/roster', [rostercontroller::class, 'ShowRosterForm'])->name('Homwefind.roster');
