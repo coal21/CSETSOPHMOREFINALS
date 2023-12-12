@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Supervisor extends Authenticatable
 {
@@ -18,7 +19,14 @@ class Supervisor extends Authenticatable
         'password',
         'DOB',
         'status',
-        'role_id'
+        'role_id',
+        'roster_date',
+        'supervisor_id',
+        'doctor_id',
+        'caregiver_1_id',
+        'caregiver_2_id',
+        'caregiver_3_id',
+        'caregiver_4_id'
     ];
 
     // Specify the table name if it's different from the default

@@ -1,4 +1,23 @@
+<style>
+    .btn5{
+    margin-right:750px;
+    float:right;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 25%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+</style>
 @extends('layout.layout')
+
 <script>
 window.onclick = function(event) {
   if (event.target.className === 'modal') {
@@ -23,6 +42,10 @@ const forms = document.querySelectorAll('#form')
 
 
 @section('content')
+
+
+
+
 <form method="GET" action="/doctor/search-patients">
             @csrf
             <label for="searchBy">Search By:</label>
@@ -34,6 +57,7 @@ const forms = document.querySelectorAll('#form')
             <input type="text" id="searchText" name="searchText" placeholder="Enter search text...">
             <button type="submit">Search</button>
         </form>
+        
         <table>
             <thead>
                 <tr>

@@ -17,6 +17,12 @@ class rostercontroller extends Controller
 
     public function createRoster(Request $request) {
 
+        $roles = session('roles');
+
+        if ($roles !== 'Admin' && $roles !== 'Supervisor') {
+            return redirect()->route('some.error.route'); // Replace 'some.error.route' with your error route name or show an error message
+        }
+        
         $roster = new Roster();
         
         $roster->roster_date = $request->post('roster_date');
@@ -33,6 +39,7 @@ class rostercontroller extends Controller
 
         return view('Homwefind.roster')->with('createdRoster', $createdRoster);
     }
+
 public function filterRosters(Request $request) {
 
     $request->validate([
@@ -42,7 +49,6 @@ public function filterRosters(Request $request) {
     $selectedDate = $request->input('selected_date');
     $rosters = Roster::where('roster_date', $selectedDate)->get();
 
-    // You can also load related data (e.g., supervisor, doctor, caregivers) if needed
 
     return view('Homwefind.roster', ['rosters' => $rosters]);
 }
