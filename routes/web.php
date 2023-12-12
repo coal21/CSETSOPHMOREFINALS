@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\caregivercontroller;
@@ -110,4 +111,6 @@ Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPat
 Route::get('/patientsearch', [YourController::class, 'search'])->name('Homwefind.patientsearch');
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
+
+
 

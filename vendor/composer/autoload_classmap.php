@@ -24,7 +24,6 @@ return array(
     'App\\Http\\Controllers\\newrostercontroller' => $baseDir . '/app/Http/Controllers/newrostercontroller.php',
     'App\\Http\\Controllers\\patienthomecontroller' => $baseDir . '/app/Http/Controllers/patienthomecontroller.php',
     'App\\Http\\Controllers\\patientsearchcontroller' => $baseDir . '/app/Http/Controllers/patientsearchcontroller.php',
-    'App\\Http\\Controllers\\registrationapprovalcontroller' => $baseDir . '/app/Http/Controllers/registrationapprovalcontroller.php',
     'App\\Http\\Controllers\\rostercontroller' => $baseDir . '/app/Http/Controllers/rostercontroller.php',
     'App\\Http\\Controllers\\signupcontroller' => $baseDir . '/app/Http/Controllers/signupcontroller.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
