@@ -1,3 +1,10 @@
 {
-   "patient_id" : 1
-}
+   "roster_date": "2023-12-12",
+   "supervisor_id": 1,
+   "doctor_id": 1,
+   "caregiver_1_id": 1,
+   "caregiver_2_id": 2,
+   "caregiver_3_id": 3,
+   "caregiver_4_id": 4
+ }
+ 

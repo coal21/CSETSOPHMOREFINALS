@@ -14,7 +14,7 @@ return new class extends Migration
     Schema::create('reports', function (Blueprint $table) {
         $table->id();
 
-        $table->unsignedBigInteger('patient_id');
+        $table->unsignedBigInteger('patient_id')->nullable();
         $table->foreign('patient_id')->references('id')->on('patients');
 
         $table->unsignedBigInteger('caregiver_id')->nullable();
