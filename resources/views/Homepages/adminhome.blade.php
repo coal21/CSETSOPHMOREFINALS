@@ -53,8 +53,7 @@ window.onclick = function(event) {
     @isset($patients)
     @foreach($patients as $patient)
         <tr>
-            <td>{{$patient->first_name}}<td>
-
+            <td>{{$patient->first_name}} {{$patient->last_name}}<td>
             <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$patient->id}}">
@@ -71,38 +70,12 @@ window.onclick = function(event) {
     </table>
 
 
-
-    <h1>Caregivers</h1>
-    <table>
-    @isset($caregivers)
-    @foreach($caregivers as $caregiver)
-        <tr>
-            <td>{{$caregiver->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
-                @csrf
-                <input type="hidden" name="id" value="{{$caregiver->id}}">
-                <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
-                <input type="hidden" name="first_name" value="{{$caregiver->first_name}}">
-                <input type="hidden" name="salary" value="5">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
-            </form>
-    
-        </tr>
-        @endforeach
-    @endisset
-    </table>
-
-
-    <h1>Family Members</h1>
+<h1>Family Members</h1>
     <table>
     @isset($families)
     @foreach($families as $family)
         <tr>
-            <td>{{$family->first_name}}<td>
+            <td>{{$family->first_name}} {{$family->last_name}}<td>
 
             <form method="POST" action="/approve" id="form">
                 @csrf
@@ -120,19 +93,44 @@ window.onclick = function(event) {
     </table>
 
 
+    <h1>Caregivers</h1>
+    <table>
+    @isset($caregivers)
+    @foreach($caregivers as $caregiver)
+        <tr>
+            <td>{{$caregiver->first_name}} {{$caregiver->last_name}}<td>
+            
+            <form method="POST" action="/approve" id="form">
+                @csrf
+                <input type="hidden" name="id" value="{{$caregiver->id}}">
+                <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
+                <input type="hidden" name="first_name" value="{{$caregiver->first_name}}">
+                <input type="hidden" name="salary" value=5>
+
+                <input id="dec" type="hidden" name="decision" value="">
+
+                <input id="sub" type="submit" value="Yes"/>
+                <input id="sub" type="submit" value="No"/>
+            </form>
+    
+        </tr>
+        @endforeach
+    @endisset
+    </table>
+
     <h1>Doctors</h1>
     <table>
     @isset($doctors)
     @foreach($doctors as $doctor)
         <tr>
-            <td>{{$doctor->first_name}}<td>
-
+            <td>{{$doctor->first_name}}  {{$doctor->last_name}}<td>
             <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$doctor->id}}">
                 <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
                 <input type="hidden" name="first_name" value="{{$doctor->first_name}}">
-                <input type="hidden" name="salary" value="5">
+                <input type="hidden" name="salary" value=5>
+
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
@@ -149,20 +147,20 @@ window.onclick = function(event) {
     @isset($supervisors)
     @foreach($supervisors as $supervisor)
         <tr>
-            <td>{{$supervisor->first_name}}<td>
-
+            <td>{{$supervisor->first_name}} {{$supervisor->last_name}}<td>
+            
+            
             <form method="POST" action="/approve" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$supervisor->id}}">
                 <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
                 <input type="hidden" name="first_name" value="{{$supervisor->first_name}}">
-                <input type="hidden" name="salary" value="5">
+                <input type="hidden" name="salary" value=5>
                 <input id="dec" type="hidden" name="decision" value="">
 
                 <input id="sub" type="submit" value="Yes"/>
                 <input id="sub" type="submit" value="No"/>
             </form>
-    
         </tr>
         @endforeach
     @endisset
@@ -206,25 +204,12 @@ window.onclick = function(event) {
         </table>
     </div>
 </div>
-
-    <!-- Button to open the Create Rosters modal -->
-<button class="btn5" onclick="document.getElementById('id05').style.display='block'">Create Rosters</button>
-
-    <!-- Create Rosters modal -->
-    <div id="id05" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('id05').style.display='none'">&times;</span>
-            <!-- Include the roster.blade.php content here -->
-            <iframe src="{{ route('Homwefind.roster') }}" width="100%" height="50%"></iframe>
-        </div>
-    </div>
-
-</div>
 </div>
 
         </div>
     </div>
 
+    
 
     <script>
 

@@ -56,7 +56,6 @@ class signupcontroller extends Controller
             'amount_due' => 0.0,
             'doctor_id' => null,
             'role_id' => 5,
-            'group'->$randomValue
             ]);
             return view('Homwefind.pending_approval');
         }

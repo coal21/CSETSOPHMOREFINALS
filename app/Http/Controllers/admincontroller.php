@@ -58,7 +58,7 @@ class admincontroller extends Controller
         ]);
     }
 
-    public function approveAccount(Request $request)
+     public function approveAccount(Request $request)
     {
         $id = $request->input('id');
         $role_id = $request->input('role_id');
@@ -86,9 +86,7 @@ class admincontroller extends Controller
                 $user = Family::findorFail($id);
                 break;
         }
-
-
-        if ($finalDecision === "Yes") {
+        if ($finalDecision === "Yes" && $role_id < 5) {
             $employee = Employee::create([
                 'first_name' => $request->input('first_name'),
                 'salary' => $request->input('salary'),
@@ -96,16 +94,20 @@ class admincontroller extends Controller
             ]);
             $user->status = "Approved";
             $user->save();
+        } elseif ($finalDecision === "Yes" && $role_id > 4) {
+            $user->status = "Approved";
+            $user->save();
         } else {
             $user->delete();
         }
-
+        
         return $this->awaiting();
-
     }
 
-    public function adminsearchPatients(Request $request)
-{
+    
+    
+public function adminsearchPatients(Request $request)
+    {
     $roles = Roles::all();
     $patients = Patient::where('status', 'Approved')->get();
     $searchBy = $request->input('searchBy');
@@ -128,3 +130,6 @@ class admincontroller extends Controller
 }
 
 }
+
+
+?>

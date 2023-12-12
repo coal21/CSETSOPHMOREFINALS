@@ -8,9 +8,9 @@ class employeecontroller extends Controller
 {
     public function show()
     {
-
-    $employee = Employee::all();
-        return view('Homepages.caregiverhome', ['employee' => $employee]);
-
+       $employees = Employee::all();
+       return view('Homwefind.employee', [
+        'employees' => $employees,
+    ]);
     }
 }
