@@ -108,6 +108,18 @@ class logincontroller extends Controller
             break;
         case 'Family':
             $user = Patient::where('email', $email)->first();
+<<<<<<< HEAD
+            $homeRoute = 'family.home';
+            break;
+            default:
+    }
+// Code to check if account is approved->
+    if ($user && password_verify($password, $user->password  && $user->status === 'Approved')) {
+        session_start();
+        session(['name' => $user->first_name . ' ' . $user->last_name]);
+        session(['id' => $user->id]);
+        session(['role' => $user->role_id]);
+=======
             if ($user && Hash::check($password, $user->password && $user->status === 'Approved')) {
                 Auth::login($user);
                 session_start();
@@ -122,6 +134,7 @@ class logincontroller extends Controller
             break;
             default:
     }
+>>>>>>> 5db42127e058fc8826cec5d14b515e554f3b1f13
         return redirect()->route($homeRoute);
     } else {
         return back()->withErrors(['message' => 'Invalid credentials or status not approved']);
