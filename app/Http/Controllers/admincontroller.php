@@ -67,7 +67,8 @@ class admincontroller extends Controller
     {
         $id = $request->input('id');
         $role_id = $request->input('role_id');
-
+        $first_name = $request->input('first_name');
+        $salary = $request->input('salary');
         $finalDecision = $request->input('decision');
 
         $usersRole = Roles::where('id', $role_id)->first();
@@ -93,6 +94,11 @@ class admincontroller extends Controller
 
 
         if ($finalDecision === "Yes") {
+            $employee = Employee::create([
+                'first_name' => $request->input('first_name'),
+                'salary' => $request->input('salary'),
+                'role_id' => $request->input('role_id'),
+            ]);
             $user->status = "Approved";
             $user->save();
         } else {

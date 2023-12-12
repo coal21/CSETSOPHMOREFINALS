@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class rostercontroller extends Controller
 {
+    public function showRosterForm()
+    {
+        return view('Homwefind/roster'); 
+    }
 
     public function createRoster(Request $request) {
 
@@ -51,9 +55,21 @@ class rostercontroller extends Controller
         
         $roster->save();
 
-        
-
-        return "Created roster successfully";
-
+        return view('Homwefind.roster')->with('createdRoster', $roster);
     }
+public function filterRosters(Request $request) {
+
+    $request->validate([
+        'selected_date' => 'required|date'
+    ]);
+    
+    $selectedDate = $request->input('selected_date');
+    $rosters = Roster::where('roster_date', $selectedDate)->get();
+
+    // You can also load related data (e.g., supervisor, doctor, caregivers) if needed
+
+    return view('Homwefind.roster', ['rosters' => $rosters]);
+}
+
+
 }
