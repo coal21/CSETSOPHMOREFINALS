@@ -54,7 +54,7 @@
     @endisset
 
     <h2>Find Roster By Date </h2>
-    <form action="{{ route('filterRosters') }}" method="POST">
+    <form action="{{ route('filtertheRosters') }}" method="POST">
     @csrf 
     <label for="selected_date">Select Date:</label>
     <input type="date" id="selected_date" name="selected_date" required><br>

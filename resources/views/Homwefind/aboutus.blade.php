@@ -11,10 +11,10 @@
             padding: 20px;
             font-family: Arial, sans-serif;
         }
-        h1 {
+        /* h1 {
             text-align: center;
             color: #333;
-        }
+        } */
         p {
             line-height: 1.6;
         }
