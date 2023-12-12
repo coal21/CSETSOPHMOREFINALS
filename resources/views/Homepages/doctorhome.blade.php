@@ -39,9 +39,6 @@ const forms = document.querySelectorAll('#form')
         }
 </script>
 @section('content')
-<<<<<<< HEAD
-
-
 
 
 <form method="GET" action="/doctor/search-patients">
@@ -110,7 +107,6 @@ const forms = document.querySelectorAll('#form')
             </tbody>
         </table>
 
-=======
 <div>
     Welcome, {{ session('name') }}!
 </div>
@@ -121,5 +117,5 @@ const forms = document.querySelectorAll('#form')
         <iframe src="{{ route('Homwefind.patientsearch') }}" width="100%" height="50%"></iframe>
     </div>
 </div>
->>>>>>> 5db42127e058fc8826cec5d14b515e554f3b1f13
+
 @endsection
