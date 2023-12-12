@@ -3,11 +3,8 @@
 
 @section('content')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+
     <style>
-        /* Add some basic styling for the content */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -20,7 +17,6 @@
         }
         p {
             line-height: 1.6;
-            color: #666;
         }
     </style>
 </head>

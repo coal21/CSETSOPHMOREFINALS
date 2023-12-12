@@ -1,12 +1,15 @@
 <?php
 
 
+use App\Http\Controllers\AboutUsController;
+
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\caregivercontroller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
+use App\Http\Controllers\patientsearchcontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\caregiverhomecontroller;
 use App\Http\Controllers\rostercontroller;
@@ -35,6 +38,7 @@ Route::get('/', function () {
 
 route::get('/home', [landingcontroller::class,'index']);
 
+
 // Login Routes
 route::get('/login', [logincontroller::class,'index']);
 
@@ -50,6 +54,8 @@ Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
 
+// Route::get('/supervisor', [Supervisorcontroller::class,'show']);
+
 Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 
 Route::get('/patient-home', [LoginController::class, 'patientHome'])->name('patient.home');
@@ -58,19 +64,25 @@ Route::get('/family-home', [LoginController::class, 'familyHome'])->name('family
 
 Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
+Route::get('/aboutus', [AboutUsController::class, 'index'])->name('aboutus');
+
+
 
 Route::view('/roster', [rostercontroller::class, 'showRosterForm'])->name('roster.form');
 Route::post('/createRoster', [rostercontroller::class, 'createRoster'])->name('createRoster');
 Route::get('/filterRosters', [rostercontroller::class, 'filterRosters'])->name('filterRosters');
 Route::post('/filterRosters', [rostercontroller::class, 'filterRosters'])->name('filterRosters');
-
-
-
-// // Use a POST route for handling form submissions
 Route::get('/Homwefind/roster', [rostercontroller::class, 'ShowRosterForm'])->name('Homwefind.roster');
 
 
+
 Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
+
+
+// Role creation
+
+Route::post("/createRole", [admincontroller::class, 'createRole']);
+
 
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
@@ -80,10 +92,13 @@ Route::post('/signup/submit', [signupController::class, 'submit']);
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 // Admin Routes
+Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/search-patients', [admincontroller::class, 'searchPatients']);
+Route::get('/admin/search-patients', [admincontroller::class, 'adminsearchPatients']);
+
+Route::get('/signup', [signupcontroller::class,'index']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
@@ -94,7 +109,7 @@ Route::get('/supervisor/search-patients', [supervisorcontroller::class, 'supervi
 
 // Doctor routes
 Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
-
+Route::get('/patientsearch', [YourController::class, 'search'])->name('Homwefind.patientsearch');
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
