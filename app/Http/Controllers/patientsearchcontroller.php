@@ -23,22 +23,46 @@ class patientsearchcontroller extends Controller
     }
 
     public function searchPatients(Request $request)
-    {
-        $patients = Patient::where('status', 'Approved')->get();
-        $searchBy = $request->input('searchBy');
-        $searchText = $request->input('searchText');
-    
-        $patients = [];
-    
-        if ($searchBy == 'all') {
-            $patients = Patient::where('status', 'Approved')->get();
-        } else {
-            $patients = Patient::where('status', 'Approved')
-                ->where($searchBy, 'LIKE', "%$searchText%")
+{
+    $searchBy = $request->input('searchBy');
+    $searchText = $request->input('searchText');
+    $patients = null;
+
+    switch ($searchBy) {
+        case 'first_name':
+            $patients = Patient::where('status', 'approved')
+                ->where('first_name', 'LIKE', "%$searchText%")
                 ->get();
-        }
-        return view('Homwefind.patientsearch', [
-            'patients' => $patients, 
-        ]);
+            break;
+        case 'last_name':
+            $patients = Patient::where('status', 'approved')
+                ->where('last_name', 'LIKE', "%$searchText%")
+                ->get();
+            break;
+        case 'id':
+            $patients = Patient::where('status', 'approved')
+                ->where('id', $searchText)
+                ->get();
+            break;
+        case 'emergency_contact':
+            $patients = Patient::where('status', 'approved')
+                ->where('emergency_contact', 'LIKE', "%$searchText%")
+                ->get();
+            break;
+        case 'emergency_contact_name':
+            $patients = Patient::where('status', 'approved')
+                ->where('emergency_contact_name', 'LIKE', "%$searchText%")
+                ->get();
+            break;
+        case 'created_at':
+            $patients = Patient::where('status', 'approved')
+                ->where('created_at', 'LIKE', "%$searchText%")
+                ->get();
+            break;
+        default:
+            break;
+    }
+
+    return view('Homwefind.patientsearch', ['patients' => $patients]);
 }
 }

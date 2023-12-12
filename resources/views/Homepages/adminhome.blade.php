@@ -4,6 +4,9 @@
 
 
 @section('content')
+<div>
+    Welcome, {{ session('name') }}!
+</div>
     <button class="btn3" onclick="document.getElementById('id01').style.display='block'">View/Create Roles</button>
     <div id="id01" class="modal">
         <div class="modal-content">

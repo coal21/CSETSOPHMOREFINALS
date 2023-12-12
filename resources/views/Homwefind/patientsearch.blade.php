@@ -2,9 +2,12 @@
             @csrf
             <label for="searchBy">Search By:</label>
             <select id="searchBy" name="searchBy">
-                <option value="all">All Patients</option>
                 <option value="first_name">First Name</option>
                 <option value="last_name">Last Name</option>
+                <option value="id">ID</option>
+                <option value="emergency_contact">Emergency Contact</option>
+                <option value="emergency_contact_name">Emergency Contact Name</option>
+                <option value="created_at">Created At</option>
             </select>
             <input type="text" id="searchText" name="searchText" placeholder="Enter search text...">
             <button type="submit">Search</button>

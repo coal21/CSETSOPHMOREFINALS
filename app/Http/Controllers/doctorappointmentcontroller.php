@@ -14,7 +14,11 @@ class doctorappointmentcontroller extends Controller
         $patients = Patient::where('status', 'Approved')->get();
         $doctors = Doctors::where('status', 'Approved')->get();
         $Appointment = Appointment::all();
-        return view('Homwefind.doctorappointment', ['Appointment' => $Appointment, 'doctors' => $doctors, 'patients'=> $patients]);
+        return view('Homwefind.doctorappointment', [
+            'Appointment' => $Appointment,
+            'doctors' => $doctors, 
+            'patients'=> $patients,
+        ]);
     }
 
 
@@ -28,7 +32,6 @@ class doctorappointmentcontroller extends Controller
             return back()->withInput()->withErrors(['message' => 'An account with this email or phone already exists.']);
         }
         else 
-
         $Appointment = Appointment::create([
             'patient_id' => $request->input('patient_id'),
             'doctor_id' => $request->input('doctor_id'),

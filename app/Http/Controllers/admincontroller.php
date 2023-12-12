@@ -31,7 +31,7 @@ class admincontroller extends Controller
             'supervisors' => $supervisors,
         ]);
     }
-
+    
     public function createRole(Request $request)
     {
         $role = Roles::create([

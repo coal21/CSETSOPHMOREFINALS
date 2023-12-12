@@ -110,3 +110,5 @@ Route::get('/Homwefind/patientsearch', [admincontroller::class, 'search'])->name
 Route::post("/approve", [registrationapprovalcontroller::class,"approveAccount"]);
 
 Route::get('/Homwefind/doctorappointment', [doctorappointmentcontroller::class, 'show'])->name('Homwefind.doctorappointment');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
