@@ -29,14 +29,23 @@ class rostercontroller extends Controller
 
         $roster->save();
 
-        // Fetch the created roster (you may customize this based on your actual database structure)
         $createdRoster = Roster::find($roster->id);
 
-        // Pass the roster data to the view
         return view('Homwefind.roster')->with('createdRoster', $createdRoster);
-
-
     }
+public function filterRosters(Request $request) {
 
+    $request->validate([
+        'selected_date' => 'required|date'
+    ]);
     
+    $selectedDate = $request->input('selected_date');
+    $rosters = Roster::where('roster_date', $selectedDate)->get();
+
+    // You can also load related data (e.g., supervisor, doctor, caregivers) if needed
+
+    return view('Homwefind.roster', ['rosters' => $rosters]);
+}
+
+
 }
