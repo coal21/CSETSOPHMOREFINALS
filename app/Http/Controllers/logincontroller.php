@@ -122,17 +122,12 @@ class logincontroller extends Controller
             break;
             default:
     }
-// Code to check if account is approved->
-    if ($user && password_verify($password, $user->password  && $user->status === 'Approved')) {
-        session_start();
-        session(['name' => $user->first_name . ' ' . $user->last_name]);
-        session(['id' => $user->id]);
-        session(['role' => $user->role_id]);
         return redirect()->route($homeRoute);
     } else {
         return back()->withErrors(['message' => 'Invalid credentials or status not approved']);
     }
 }
+
 
     public function adminHome()
     {

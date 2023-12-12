@@ -7,6 +7,7 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\patienthomecontroller;
 use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\caregiverhomecontroller;
 use App\Http\Controllers\rostercontroller;
 use App\Http\Controllers\doctorappointmentcontroller;
 use App\Http\Controllers\employeecontroller;
@@ -70,12 +71,6 @@ Route::get('/Homwefind/roster', [rostercontroller::class, 'ShowRosterForm'])->na
 
 Route::post("/createPrescription", [PrescriptionController::class, "createPrescription"]);
 
-
-// Role creation
-
-Route::post("/createRole", [admincontroller::class, 'createRole']);
-
-
 // signup routes
 route::get('/signup', [signupcontroller::class,'index']);
 
@@ -102,20 +97,3 @@ Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPat
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
-Route::post('/appointment/submit', [doctorappointmentcontroller::class, 'submit'])->name('submit-appointment');
-
-
-//Cargiver Routes
-Route::get('/caregiver/search-patients', [caregivercontroller::class, 'caregiversearchPatients']);
-
-
-//Misc feature routes
-Route::get('/Homwefind/approveaccounts', [registrationapprovalcontroller::class, 'show'])->name('Homwefind.approveaccounts');
-
-Route::get('/Homwefind/patientsearch', [admincontroller::class, 'search'])->name('Homwefind.patientsearch');
-
-Route::post("/approve", [registrationapprovalcontroller::class,"approveAccount"]);
-
-Route::get('/Homwefind/doctorappointment', [doctorappointmentcontroller::class, 'show'])->name('Homwefind.doctorappointment');
-
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
