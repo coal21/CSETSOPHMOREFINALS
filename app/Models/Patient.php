@@ -23,5 +23,16 @@ class Patient extends Model
         'amount_due',
         'doctor_id',
         'role_id',
+        "group"
     ];
+
+
+    public static function getRandomGroupLetter() {
+        $array = array("A","B","C","D");
+        $randomKey = array_rand($array);
+        $randomValue = $array[$randomKey];
+
+        return $randomValue;
+    }
+
 }

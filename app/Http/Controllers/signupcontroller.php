@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reports;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Caregiver;
 use App\Models\Family;
@@ -38,10 +39,6 @@ class signupcontroller extends Controller
     
         if ($role === 'Patient') {
 
-            $groups = array("A", "B", "C", "D");
-            $randomKey = array_rand($groups);
-            $randomValue = $groups[$randomKey];
-
             $patient = Patient::create([
             'first_name' => $request->input('firstName'),
             'last_name' => $request->input('lastName'),
@@ -56,8 +53,8 @@ class signupcontroller extends Controller
             'amount_due' => 0.0,
             'doctor_id' => null,
             'role_id' => 5,
-            'group'->$randomValue
             ]);
+
             return view('Homwefind.pending_approval');
         }
         elseif ($role === 'Doctor') {
@@ -97,6 +94,11 @@ class signupcontroller extends Controller
             'status' => "Pending",
             'role_id' => 4,
             ]);
+
+            $report = Reports::create([
+                'caregiver_id' => $caregiver->id,
+            ]);
+
             return view('Homwefind.pending_approval');
         }
         elseif ($role === 'Family') {

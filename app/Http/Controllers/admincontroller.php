@@ -12,6 +12,9 @@ use App\Models\Roster;
 use App\Models\Supervisor;
 use App\Models\Employee;
 
+
+
+
 class admincontroller extends Controller
 {
     public function show()
@@ -19,25 +22,27 @@ class admincontroller extends Controller
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
         $family = Family::where('status', 'Pending')->get();
-        $patients = Patient::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Approved')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
+
         return view('Homepages.adminhome', [
             'roles' => $roles,
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
-            'family' => $family, 
+            'families' => $family, 
             'patients' => $patients, 
-            'supervisors' => $supervisors
+            'supervisors' => $supervisors,
         ]);
     }
-
+    
     public function createRole(Request $request)
     {
         $role = Roles::create([
             'name' => $request->input('roleName'),
             'access_level' => $request->input('accessLevel'),
         ]);
+        return $this -> show();
     }
     
     public function awaiting()
@@ -45,7 +50,7 @@ class admincontroller extends Controller
         $caregivers = Caregiver::where('status', 'Pending')->get();
         $doctors = Doctors::where('status', 'Pending')->get();
         $family = Family::where('status', 'Pending')->get();
-        $patients = Patient::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Approved')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
         return view('Homepages.adminhome', [
@@ -58,73 +63,45 @@ class admincontroller extends Controller
         ]);
     }
 
-    public function approveAccount(Request $request)
+    public function search()
     {
-        $id = $request->input('id');
-        $role_id = $request->input('role_id');
-        $first_name = $request->input('first_name');
-        $salary = $request->input('salary');
-        $finalDecision = $request->input('decision');
+        $patients = Patient::where('status', 'Approved')->get();
+        $roles = Roles::all();
+        return view('Homwefind.patientsearch', [
+            'patients' => $patients, 
+        ]);
+    }
 
-        $usersRole = Roles::where('id', $role_id)->first();
-        $user = null;
-
-        switch ($usersRole->name) {
-            case 'Caregiver':
-                $user = Caregiver::findorFail($id);
-                break;
-            case 'Doctor':
-                $user = Doctors::findorFail($id);
-                break;
-            case 'Supervisor':
-                $user = Supervisor::findorFail($id);
-                break;
-            case 'Patient':
-                $user = Patient::findorFail($id);
-                break;
-            case 'Family':
-                $user = Family::findorFail($id);
-                break;
-        }
-
-
-        if ($finalDecision === "Yes") {
-            $employee = Employee::create([
-                'first_name' => $request->input('first_name'),
-                'salary' => $request->input('salary'),
-                'role_id' => $request->input('role_id'),
-            ]);
-            $user->status = "Approved";
-            $user->save();
+    public function searchPatients(Request $request)
+    {
+        $caregivers = Caregiver::where('status', 'Pending')->get();
+        $doctors = Doctors::where('status', 'Pending')->get();
+        $family = Family::where('status', 'Pending')->get();
+        $patients = Patient::where('status', 'Approved')->get();
+        $supervisors = Supervisor::where('status', 'Pending')->get();
+        $roles = Roles::all();
+        $searchBy = $request->input('searchBy');
+        $searchText = $request->input('searchText');
+    
+        $patients = [];
+    
+        if ($searchBy === 'all') {
+            $patients = Patient::where('status', 'Approved')->get();
         } else {
-            $user->delete();
+            $patients = Patient::where('status', 'Approved')
+                ->where($searchBy, 'LIKE', "%$searchText%")
+                ->get();
         }
-
-        return $this->awaiting();
-
-    }
-
-    public function adminsearchPatients(Request $request)
-{
-    $roles = Roles::all();
-    $patients = Patient::where('status', 'Approved')->get();
-    $searchBy = $request->input('searchBy');
-    $searchText = $request->input('searchText');
-
-    $patients = [];
-
-    if ($searchBy === 'all') {
-        $Apatients = Patient::where('status', 'Approved')->get();
-    } else {
-        $Apatients = Patient::where('status', 'Approved')
-            ->where($searchBy, 'LIKE', "%$searchText%")
-            ->get();
-    }
-    $this->awaiting();
-    return view('Homepages.adminhome', [
-        'roles' => $roles,
-        'Apatients' => $Apatients, 
-    ]);
+        return view('Homwefind.patientsearch', [
+            'roles' => $roles,
+            'patients' => $patients, 
+            'roles' => $roles,
+            'caregivers' => $caregivers, 
+            'doctors' => $doctors, 
+            'family' => $family, 
+            'patients' => $patients, 
+            'supervisors' => $supervisors,
+        ]);
 }
 
 }

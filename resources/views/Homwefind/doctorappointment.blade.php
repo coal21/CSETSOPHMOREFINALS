@@ -1,56 +1,32 @@
-@extends('layout.layout')
+<form method="POST" action="{{ route('submit-appointment') }}">
+        @csrf
+        <label for="patient_id">Select Patient:</label>
+        @isset($patients)
+        <select name="patient_id" id="patient_id">
+            @foreach($patients as $patient)
+                <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+            @endforeach
+        </select>
+        @endisset
+        <br><br>
 
+        <label for="doctor_id">Select Doctor:</label>
+        @isset($doctors)
+        <select name="doctor_id" id="doctor_id">
+            @foreach($doctors as $doctor)
+                <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+            @endforeach
+        </select>
+        @endisset
+        <br><br>
 
-@section('content')
-    <h2>Book an Appointment</h2>
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" name="appointment_date" id="appointment_date">
+        <br><br>
 
-    <table>
-        @foreach($Appointment as $Appointment)
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+        <br><br>
 
-        <tr>
-            <td>{{$Appointment->patient_id}}</td>
-            <td>{{$Appointment->appointment_date}}</td>
-            <td>{{$Appointment->comment}}</td>
-            <td>{{$Appointment->doctor_id}}</td>
-        </tr>
-        @endforeach
-    </table>    
-    <!-- @if(session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
-    @endif -->
-    <div class="appointmentsubmit">
-        <form method="post" action="{{ route('submit.appointment') }}">
-            @csrf
-            <label for="patient_id">Patient ID:</label>
-            <input type="text" name="patient_id" required>
-
-            <br>
-
-            <label for="doctor_id">Doctor_id:</label>
-            <input type="text" name="doctor_id" required>
-
-            <br>
-
-            <label for="appointment_date">Appointment Date:</label>
-            <input type="date" name="appointment_date" required>
-
-            <br>
-
-            <label for="comment">comment</label>
-            <input type="text" name="comment" required>
-
-            <br>
-
-            <!-- <label for="doctor_id">Doctor Name:</label>
-            <select name="doctor_id" required>
-                @foreach($Appointment as $Appointments)
-                    <option value="{{ $Appointment }}">{{ $Appointment->doctor_id }}</option>
-                @endforeach
-            </select> -->
-
-            <br>
-
-            <button type="submit">Book Appointment</button>
-        </form>
-    </div>
-@endsection
+        <input type="submit" value="Submit Appointment">
+    </form>
