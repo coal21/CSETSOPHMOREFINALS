@@ -1,21 +1,22 @@
 @extends('layout.layout')
 
 
-<script>
-window.onclick = function(event) {
-  if (event.target.className === 'modal') {
-    event.target.style.display = 'none';
-  }
-};
 
-</script>
 
 @section('content')
+<div>
+    Welcome, Admin!
+</div>
     <button class="btn3" onclick="document.getElementById('id01').style.display='block'">View/Create Roles</button>
     <div id="id01" class="modal">
         <div class="modal-content">
         <span class="close" onclick="document.getElementById('id01').style.display='none'">&times;</span>
         <table>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Level</td>
+        </tr>
         @foreach($roles as $role)
         <tr>
             <td>{{$role->id}}</td>
@@ -48,162 +49,21 @@ window.onclick = function(event) {
     <div id="id02" class="modal">
         <div class="modal-content">
         <span class="close" onclick="document.getElementById('id02').style.display='none'">&times;</span>
-        <h1>Patients</h1>
-    <table>
-    @isset($patients)
-    @foreach($patients as $patient)
-        <tr>
-            <td>{{$patient->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
-                @csrf
-                <input type="hidden" name="id" value="{{$patient->id}}">
-                <input type="hidden" name="role_id" value="{{$patient->role_id}}">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
-            </form>
-    
-        </tr>
-        @endforeach
-    @endisset
-    </table>
-
-
-
-    <h1>Caregivers</h1>
-    <table>
-    @isset($caregivers)
-    @foreach($caregivers as $caregiver)
-        <tr>
-            <td>{{$caregiver->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
-                @csrf
-                <input type="hidden" name="id" value="{{$caregiver->id}}">
-                <input type="hidden" name="role_id" value="{{$caregiver->role_id}}">
-                <input type="hidden" name="first_name" value="{{$caregiver->first_name}}">
-                <input type="hidden" name="salary" value="5">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
-            </form>
-    
-        </tr>
-        @endforeach
-    @endisset
-    </table>
-
-
-    <h1>Family Members</h1>
-    <table>
-    @isset($families)
-    @foreach($families as $family)
-        <tr>
-            <td>{{$family->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
-                @csrf
-                <input type="hidden" name="id" value="{{$family->id}}">
-                <input type="hidden" name="role_id" value="{{$family->role_id}}">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
-            </form>
-    
-        </tr>
-        @endforeach
-    @endisset
-    </table>
-
-
-    <h1>Doctors</h1>
-    <table>
-    @isset($doctors)
-    @foreach($doctors as $doctor)
-        <tr>
-            <td>{{$doctor->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
-                @csrf
-                <input type="hidden" name="id" value="{{$doctor->id}}">
-                <input type="hidden" name="role_id" value="{{$doctor->role_id}}">
-                <input type="hidden" name="first_name" value="{{$doctor->first_name}}">
-                <input type="hidden" name="salary" value="5">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
-            </form>
-    
-        </tr>
-        @endforeach
-    @endisset
-    </table>
-
-    <h1>Supervisor</h1>
-    <table>
-    @isset($supervisors)
-    @foreach($supervisors as $supervisor)
-        <tr>
-            <td>{{$supervisor->first_name}}<td>
-
-            <form method="POST" action="/approve" id="form">
-                @csrf
-                <input type="hidden" name="id" value="{{$supervisor->id}}">
-                <input type="hidden" name="role_id" value="{{$supervisor->role_id}}">
-                <input type="hidden" name="first_name" value="{{$supervisor->first_name}}">
-                <input type="hidden" name="salary" value="5">
-                <input id="dec" type="hidden" name="decision" value="">
-
-                <input id="sub" type="submit" value="Yes"/>
-                <input id="sub" type="submit" value="No"/>
-            </form>
-    
-        </tr>
-        @endforeach
-    @endisset
-    </table>
+        <iframe src="{{ route('Homwefind.approveaccounts') }}" width="100%" height="50%"></iframe>
         </div>
     </div>
     <button class="btn3" onclick="document.getElementById('id03').style.display='block'">Search for Patients</button>
 <div id="id03" class="modal">
     <div class="modal-content">
         <span class="close" onclick="document.getElementById('id03').style.display='none'">&times;</span>
-        <form method="GET" action="/search-patients">
-            @csrf
-            <label for="searchBy">Search By:</label>
-            <select id="searchBy" name="searchBy">
-                <option value="all">All Patients</option>
-                <option value="first_name">First Name</option>
-                <option value="last_name">Last Name</option>
-            </select>
-            <input type="text" id="searchText" name="searchText" placeholder="Enter search text...">
-            <button type="submit">Search</button>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                @isset($Apatients)
-                    @foreach($Apatients as $patient)
-                        <tr>
-                            <td>{{$patient->id}}</td>
-                            <td>{{$patient->first_name}}</td>
-                            <td>{{$patient->last_name}}</td>
-                        </tr>
-                    @endforeach
-                @endisset
-            </tbody>
-        </table>
+        <iframe src="{{ route('Homwefind.patientsearch') }}" width="100%" height="50%"></iframe>
+    </div>
+    </div>
+        <button class="btn3" onclick="document.getElementById('id04').style.display='block'">Create Appointments</button>
+            <div id="id04" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="document.getElementById('id04').style.display='none'">&times;</span>
+                <iframe src="{{ route('Homwefind.doctorappointment') }}" width="100%" height="50%"></iframe>
     </div>
 </div>
 
@@ -223,12 +83,11 @@ window.onclick = function(event) {
 </div>
 </div>
 
-        </div>
-    </div>
+</div>
+</div>
 
 
-    <script>
-
+<script>
 const forms = document.querySelectorAll('#form')
        
 for (const form of forms) {
@@ -241,6 +100,12 @@ for (const form of forms) {
         })
     }
 }
+
+window.onclick = function(event) {
+  if (event.target.className === 'modal') {
+    event.target.style.display = 'none';
+  }
+};
 
 </script>
 

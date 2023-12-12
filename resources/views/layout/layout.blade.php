@@ -182,6 +182,12 @@ footer {
 <body>
         <!-- Add your header content here -->    
     <header>
+    @if(session()->has('name'))
+    <form class="back-button" action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+    @endif
     <a href="#" class="back-button" onclick="history.back()">Back</a>
     <img src="images/logowhiteFinal.png"  class="logo" >
     <p class="slogan">Where retirement became timeless, before it was cool!</p>

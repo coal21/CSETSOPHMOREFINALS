@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\doctorController;
+use App\Http\Controllers\caregivercontroller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\SupervisorController;
@@ -32,7 +33,6 @@ Route::get('/', function () {
 
 route::get('/home', [landingcontroller::class,'index']);
 
-
 // Login Routes
 route::get('/login', [logincontroller::class,'index']);
 
@@ -47,8 +47,6 @@ Route::get('/admin-home', [LoginController::class, 'adminHome'])->name('admin.ho
 Route::get('/doctor-home', [LoginController::class, 'doctorHome'])->name('doctor.home');
 
 Route::get('/caregiver-home', [LoginController::class, 'caregiverHome'])->name('caregiver.home');
-
-// Route::get('/supervisor', [Supervisorcontroller::class,'show']);
 
 Route::get('/supervisor-home', [LoginController::class, 'supervisorHome'])->name('supervisor.home');
 
@@ -86,15 +84,38 @@ Route::post('/signup/submit', [signupController::class, 'submit']);
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
 // Admin Routes
-Route::post("/approve", [admincontroller::class,"approveAccount"]);
 
 Route::get("/awaiting", [admincontroller::class,"awaiting"]);
 
-Route::get('/admin/search-patients', [admincontroller::class, 'adminsearchPatients']);
-
-Route::get('/signup', [signupcontroller::class,'index']);
+Route::get('/search-patients', [admincontroller::class, 'searchPatients']);
 
 route::redirect('/pending-approval', 'Homwefind.pending_approval');
 
+// Supervisor Routes
+Route::post("/supervisor/approve", [supervisorcontroller::class,"approveAccount"]);
+
+Route::get('/supervisor/search-patients', [supervisorcontroller::class, 'supervisorsearchPatients']);
+
 // Doctor routes
 Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
+
+// Appointment routes
+Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
+
+Route::post('/appointment/submit', [doctorappointmentcontroller::class, 'submit'])->name('submit-appointment');
+
+
+//Cargiver Routes
+Route::get('/caregiver/search-patients', [caregivercontroller::class, 'caregiversearchPatients']);
+
+
+//Misc feature routes
+Route::get('/Homwefind/approveaccounts', [registrationapprovalcontroller::class, 'show'])->name('Homwefind.approveaccounts');
+
+Route::get('/Homwefind/patientsearch', [admincontroller::class, 'search'])->name('Homwefind.patientsearch');
+
+Route::post("/approve", [registrationapprovalcontroller::class,"approveAccount"]);
+
+Route::get('/Homwefind/doctorappointment', [doctorappointmentcontroller::class, 'show'])->name('Homwefind.doctorappointment');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
