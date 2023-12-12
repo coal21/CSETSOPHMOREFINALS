@@ -12,6 +12,9 @@ use App\Models\Roster;
 use App\Models\Supervisor;
 use App\Models\Employee;
 
+
+
+
 class admincontroller extends Controller
 {
     public function show()
@@ -22,11 +25,12 @@ class admincontroller extends Controller
         $patients = Patient::where('status', 'Pending')->get();
         $supervisors = Supervisor::where('status', 'Pending')->get();
         $roles = Roles::all();
+
         return view('Homepages.adminhome', [
             'roles' => $roles,
             'caregivers' => $caregivers, 
             'doctors' => $doctors, 
-            'family' => $family, 
+            'families' => $family, 
             'patients' => $patients, 
             'supervisors' => $supervisors
         ]);
@@ -58,6 +62,7 @@ class admincontroller extends Controller
         ]);
     }
 
+    
     public function approveAccount(Request $request)
     {
         $id = $request->input('id');
@@ -68,8 +73,6 @@ class admincontroller extends Controller
 
         $usersRole = Roles::where('id', $role_id)->first();
         $user = null;
-
-        dd($finalDecision);
 
         switch ($usersRole->name) {
             case 'Caregiver':
