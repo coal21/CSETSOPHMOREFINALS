@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('doctor_last_name');
             
             
+            
             $table->unsignedBigInteger('caregiver_1_id');
             $table->foreign('caregiver_1_id')->references('id')->on('caregivers');
             $table->string('caregiver_1_first_name');
@@ -47,7 +48,11 @@ return new class extends Migration
             $table->foreign('caregiver_4_id')->references('id')->on('caregivers');
             $table->string('caregiver_4_first_name');
             $table->string('caregiver_4_last_name');
-            
+
+            $table->string('group1')->default("A");
+            $table->string('group2')->default('B');
+            $table->string('group3')->default('C');
+            $table->string('group4')->default('D');
 
             $table->timestamps();
         });
