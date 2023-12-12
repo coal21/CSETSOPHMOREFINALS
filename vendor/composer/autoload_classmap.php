@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AboutUsController' => $baseDir . '/app/Http/Controllers/AboutUsController.php',
+    'App\\Http\\Controllers\\ContactUsController' => $baseDir . '/app/Http/Controllers/ContactUsController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
     'App\\Http\\Controllers\\PrescriptionController' => $baseDir . '/app/Http/Controllers/PrescriptionController.php',
@@ -24,6 +26,7 @@ return array(
     'App\\Http\\Controllers\\newrostercontroller' => $baseDir . '/app/Http/Controllers/newrostercontroller.php',
     'App\\Http\\Controllers\\patienthomecontroller' => $baseDir . '/app/Http/Controllers/patienthomecontroller.php',
     'App\\Http\\Controllers\\patientsearchcontroller' => $baseDir . '/app/Http/Controllers/patientsearchcontroller.php',
+    'App\\Http\\Controllers\\registrationapprovalcontroller' => $baseDir . '/app/Http/Controllers/registrationapprovalcontroller.php',
     'App\\Http\\Controllers\\rostercontroller' => $baseDir . '/app/Http/Controllers/rostercontroller.php',
     'App\\Http\\Controllers\\signupcontroller' => $baseDir . '/app/Http/Controllers/signupcontroller.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

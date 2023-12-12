@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Layout</title>
     <style>
-        /* Define the overall layout */
+
 body {
     display: flex;
     flex-direction: column;
@@ -77,21 +77,22 @@ text {
 
 nav {
     text-align: center;
-    margin-top: 0; /* Pushes the nav to the bottom of the header */
+    margin-top: 0; 
 
 }
 nav button {
+    text-align: center;
     background-color: transparent;
     cursor: pointer;
     border: none;
-    font-size: 30px; /* Adjusted font size to make buttons very large */
+    font-size: 25px; 
+    margin: 0;
 }
 
 nav button:hover {
-    background-color: #13455e; /* Change the background color on hover */
+    background-color: #13455e; 
 } 
 
-/* Remove bullets and padding from list */
 ul {
  list-style-type: none;
  padding: 0;
@@ -99,13 +100,12 @@ ul {
  justify-content: left;
 }
 
-/* Change the background color on hover */
 li:hover {
  background-color: #13455e;
 }
 
-/* Remove underline from links and align them horizontally */
 li {
+ text-align: center;
  font-family: Bradley Hand, cursive	;
  border-style:solid 2px;
  display: inline;
@@ -119,7 +119,7 @@ li a {
  text-decoration: none;
  color: white;
 }
-/* Footer styling */
+
 footer {
     background-color:#13455e;
     color: white;
@@ -180,7 +180,6 @@ footer {
 
 </style>
 <body>
-        <!-- Add your header content here -->    
     <header>
     @if(session()->has('name'))
     <form class="back-button" action="{{ route('logout') }}" method="POST">
@@ -214,8 +213,7 @@ footer {
 
 
 
-    <footer>
-        <!-- Add your footer content here -->        
+    <footer>      
         <div class="footer-container">
            @yield('footer') 
            <img src="images/logowhiteFinal.png"  class="logoFooter" >
@@ -224,7 +222,7 @@ footer {
         </div>
     </footer>
 
-    <!-- Add your JavaScript scripts or include a JS file here -->
+
 </body>
 </html>
 
