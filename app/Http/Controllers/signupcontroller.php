@@ -57,6 +57,7 @@ class signupcontroller extends Controller
             'doctor_id' => null,
             'role_id' => 5,
             ]);
+
             return view('Homwefind.pending_approval');
         }
         elseif ($role === 'Doctor') {
