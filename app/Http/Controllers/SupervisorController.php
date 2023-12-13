@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Roster;
 use Illuminate\Http\Request;
 use App\Models\Supervisor;
 use App\Models\Patient;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class SupervisorController extends Controller
 
 {
-<<<<<<< HEAD
+
     public function showRosterForm()
     {
         return view('Homwefind/roster'); 
@@ -49,8 +50,6 @@ class SupervisorController extends Controller
             return view('Homwefind.roster', ['rosters' => $rosters]);
     }
 
-
-=======
     public function show()
     {
         $Apatients = Patient::where('status', 'Approved')->get();
@@ -76,5 +75,5 @@ class SupervisorController extends Controller
         'Apatients' => $Apatients, 
     ]);
 }
->>>>>>> 5db42127e058fc8826cec5d14b515e554f3b1f13
+
 }
