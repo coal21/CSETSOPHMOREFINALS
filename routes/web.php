@@ -118,7 +118,7 @@ Route::get('/supervisor/search-patients', [supervisorcontroller::class, 'supervi
 
 // Doctor routes
 Route::get('/doctor/search-patients', [doctorcontroller::class, 'doctorsearchPatients']);
-Route::get('/patientsearch', [doctorcontroller::class, 'search'])->name('Homwefind.patientsearch');
+Route::get('/patientsearch', [admincontroller::class, 'search']);
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
@@ -127,3 +127,5 @@ Route::get('/appointments', [doctorappointmentcontroller::class,'show']);
 Route::post("/submitAppointment", [doctorappointmentcontroller::class,"submitAppointment"]);
 
 Route::get("/approvals", [registrationapprovalcontroller::class, "show"]);
+
+Route::get("/rosters", [rostercontroller::class,"showRosterForm"]);
