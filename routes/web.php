@@ -122,5 +122,8 @@ Route::get('/patientsearch', [doctorcontroller::class, 'search'])->name('Homwefi
 // Appointment routes
 Route::get('/doctorappointment', [doctorappointmentcontroller::class,'show']);
 
+// FIXED STUFF - DEXTER
+Route::get('/appointments', [doctorappointmentcontroller::class,'show']);
+Route::post("/submitAppointment", [doctorappointmentcontroller::class,"submitAppointment"]);
 
-
+Route::get("/approvals", [registrationapprovalcontroller::class, "show"]);

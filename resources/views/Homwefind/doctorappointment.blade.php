@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('submit-appointment') }}">
+<form method="POST" action="/submitAppointment">
         @csrf
         <label for="patient_id">Select Patient:</label>
         @isset($patients)

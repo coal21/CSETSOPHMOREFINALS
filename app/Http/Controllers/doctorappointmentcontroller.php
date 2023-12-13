@@ -22,7 +22,7 @@ class doctorappointmentcontroller extends Controller
     }
 
 
-    public function appointmentsubmit(Request $request)
+    public function submitAppointment(Request $request)
     {
         $patient_id = $request->input('patient_id');
         $appointment_date = $request->input('appointment_date');
